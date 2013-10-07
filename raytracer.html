@@ -19,6 +19,12 @@
 	
 	<!-- you can include additional script files here if you need -->
 	<script src="./src/raytracer.js"></script>
+    <script src="./src/sphere.js"></script>
+    <script src="./src/light.js"></script>
+    <script src="./src/camera.js"></script>
+    <script src="./src/color.js"></script>
+    <script src="./src/scene.js"></script>
+    <script src="./src/helper.js"></script>
 	<!-- ... -->
 
 		
@@ -86,18 +92,17 @@
 				setTimeout("render()",1000);
 				return;
 			}
-		
-			var color = Vector.create([0,0,0]);
+
 			var curPixel = curPixelY*width;
 			for(var i = 0; i < 50; ++i, ++curPixelY) {
 				for(curPixelX = 0; curPixelX < width; ++curPixelX) {
 					// compute the color for the current pixel
-					trace(color, curPixelX, curPixelY);
+					var color = trace(curPixelX, curPixelY);
 				
 					// copy the result in the buffer
-					pixBuffer[4*curPixel+0] = color.e(1);
-					pixBuffer[4*curPixel+1] = color.e(2);
-					pixBuffer[4*curPixel+2] = color.e(3);
+					pixBuffer[4*curPixel+0] = color.r;
+					pixBuffer[4*curPixel+1] = color.g;
+					pixBuffer[4*curPixel+2] = color.b;
 					pixBuffer[4*curPixel+3] = 1.0;
 					curPixel++;
 				}
@@ -118,9 +123,8 @@
 		}
 		
 		function debugPixel(x,y) {
-			var color = $V([0,0,0]);
-			trace(color, x, y);
-			console.log("Pixel ("+x+","+y+"): RGB -> "+color.e(1)+" "+color.e(2)+" "+color.e(3));
+			var color = trace(x, y);
+			console.log("Pixel ("+x+","+y+"): RGB -> "+color.r+" "+color.g+" "+color.b);
 		}
 		
 
