@@ -7,6 +7,10 @@ var Sphere = function (_center, _radius, _ambient, _diffuse, _specular, _specula
     this.specular_exp = _specularExp;
 };
 
+Sphere.prototype.getNormal = function (intersectionPoint) {
+    return intersectionPoint.subtract(this.center).toUnitVector();
+}
+
 Sphere.prototype.intersects = function (ray) {
 
     var o = scene.camera.pos; // ray origin

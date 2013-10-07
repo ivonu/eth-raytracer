@@ -22,7 +22,6 @@
     <script src="./src/sphere.js"></script>
     <script src="./src/light.js"></script>
     <script src="./src/camera.js"></script>
-    <script src="./src/color.js"></script>
     <script src="./src/scene.js"></script>
     <script src="./src/helper.js"></script>
 	<!-- ... -->
@@ -100,9 +99,9 @@
 					var color = trace(curPixelX, curPixelY);
 				
 					// copy the result in the buffer
-					pixBuffer[4*curPixel+0] = color.r;
-					pixBuffer[4*curPixel+1] = color.g;
-					pixBuffer[4*curPixel+2] = color.b;
+					pixBuffer[4*curPixel+0] = color.e(1);
+					pixBuffer[4*curPixel+1] = color.e(2);
+					pixBuffer[4*curPixel+2] = color.e(3);
 					pixBuffer[4*curPixel+3] = 1.0;
 					curPixel++;
 				}
@@ -124,7 +123,7 @@
 		
 		function debugPixel(x,y) {
 			var color = trace(x, y);
-			console.log("Pixel ("+x+","+y+"): RGB -> "+color.r+" "+color.g+" "+color.b);
+			console.log("Pixel ("+x+","+y+"): RGB -> "+color.r()+" "+color.g()+" "+color.b());
 		}
 		
 
