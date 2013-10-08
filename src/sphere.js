@@ -12,9 +12,8 @@ Sphere.prototype.getNormal = function (intersectionPoint) {
 }
 
 Sphere.prototype.intersects = function (ray) {
-
-    var o = scene.camera.pos; // ray origin
-    var d = ray;              // ray vector
+    var o = ray.anchor;       // ray origin
+    var d = ray.direction;    // ray vector
     var c = this.center;      // sphere center
     var r = this.radius;      // sphere radius
     var r2 = r*r;             // sphere radius squared

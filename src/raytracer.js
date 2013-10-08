@@ -1,3 +1,5 @@
+"use strict";
+
 function getRay (pixelX, pixelY) {
     var camera = scene.camera;
 
@@ -13,7 +15,7 @@ function getRay (pixelX, pixelY) {
     var direction = p.subtract(camera.pos);
 
     // return normalized vector
-    return direction.toUnitVector();
+    return new $L(camera.pos, direction.toUnitVector());
 }
 
 function intersect (ray) {
@@ -44,35 +46,38 @@ function intersect (ray) {
 }
 
 function illuminate (intersection, light) {
+
     var intersectionObject = intersection[0];
     var intersectionPoint = intersection[1];
-
-    // normal of intersection-point
-    var n = intersectionObject.getNormal(intersectionPoint);
 
     // vector from intersection-point to light-source
     var wl = light.pos.subtract(intersectionPoint).toUnitVector();
 
-    //var E = 20 / (4 * Math.PI * intersectionObject.radius * intersectionObject.radius) * n.dot(w);
+    // normal of intersection-point
+    var n = intersectionObject.getNormal(intersectionPoint);
 
-    // angle between n and wl
-    var E = n.dot(wl);
+    // view-direction
+    var w = intersectionPoint.subtract (scene.camera.pos).toUnitVector();
 
-    // ray-direction
-    var viewDirection = intersectionPoint.subtract (scene.camera.pos).toUnitVector();
+    // ray-reflection-direction: wr = 2n(w*n) - w
+    var wr = n.multiply (2 * n.dot (w)).subtract (w).toUnitVector();
 
-    // ray-reflection-direction
-    var wr = n.multiply (2 * n.dot (viewDirection)).subtract (viewDirection).toUnitVector();
-    var S = Math.pow(wr.dot(wl), intersectionObject.specular_exp) / n.dot(wl) * E;
+    var E = light.diffuseIntensity * n.dot(wl);
+    var S = Math.pow(wr.dot(wl), intersectionObject.specular_exp) / n.dot(wl);
 
-    var diffuse = intersectionObject.diffuse.multiply(E);
-    var specular = intersectionObject.specular.multiply(S);
+    var Ld = intersectionObject.diffuse.multiply(E);
+    var specular_highlight_color = S > 0 ? intersectionObject.specular.multiply(S*E) : new Color(0,0,0);
 
-    return diffuse.add(specular);
+    var color = new Color(0,0,0);
+
+    color = color.add(Ld);
+    color = color.add(specular_highlight_color);
+
+    return color;
 }
 
 function trace(pixelX, pixelY) {
-    var color = $V([0,0,0]);
+    var color = new Color(0,0,0);
 
     // 1. shoot a ray determined from the camera parameters and the pixel position in the image
     var ray = getRay(pixelX, pixelY);
@@ -81,11 +86,14 @@ function trace(pixelX, pixelY) {
     var intersection = intersect(ray);
 
 	// 3. check if the intersection point is illuminated by each light source
-    
-	// 4. shade the intersection point using the meterial attributes and the lightings
-    if (intersection[0] != null) {
+
+	// 4. shade the intersection point using the material attributes and the lighting
+    if (intersection[0] !== null) {
+        var global_ambient_color = intersection[0].ambient.multiply(scene.globalAmbientIntensity);
+        color = color.add(global_ambient_color);
+
         for (var i = 0; i < scene.lights.length; i++) {
-            color.addN(illuminate(intersection, scene.lights[i]));
+            color = color.add(illuminate(intersection, scene.lights[i]));
         }
     }
 

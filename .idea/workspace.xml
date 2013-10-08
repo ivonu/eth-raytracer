@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24b8da03-548b-4128-96d4-cefa9381b5c2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/color.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/camera.js" afterPath="$PROJECT_DIR$/src/camera.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/color.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/light.js" afterPath="$PROJECT_DIR$/src/light.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/raytracer.html" afterPath="$PROJECT_DIR$/raytracer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/raytracer.js" afterPath="$PROJECT_DIR$/src/raytracer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene.js" afterPath="$PROJECT_DIR$/src/scene.js" />
@@ -34,7 +34,34 @@
       <file leaf-file-name="raytracer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raytracer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="4" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.62184876" vertical-offset="875" max-vertical-offset="1545">
+            <state line="54" column="0" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.61598223" vertical-offset="255" max-vertical-offset="1665">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sylvester.src.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sylvester.src.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="867" column="0" selection-start="0" selection-end="45103" vertical-scroll-proportion="0.0" vertical-offset="12450" max-vertical-offset="19275">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="1" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="color.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/color.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="18" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
               <folding />
             </state>
           </provider>
@@ -43,7 +70,7 @@
       <file leaf-file-name="sphere.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sphere.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="34" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
+            <state line="14" column="0" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
               <folding />
             </state>
           </provider>
@@ -52,7 +79,7 @@
       <file leaf-file-name="scene.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="6" selection-start="2565" selection-end="2565" vertical-scroll-proportion="-6.685185" vertical-offset="554" max-vertical-offset="1095">
+            <state line="60" column="6" selection-start="2528" selection-end="2528" vertical-scroll-proportion="-12.351851" vertical-offset="233" max-vertical-offset="1080">
               <folding />
             </state>
           </provider>
@@ -61,7 +88,7 @@
       <file leaf-file-name="light.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/light.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="32" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+            <state line="0" column="92" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
               <folding />
             </state>
           </provider>
@@ -79,7 +106,7 @@
       <file leaf-file-name="raytracer.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raytracer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="23" selection-start="3189" selection-end="3192" vertical-scroll-proportion="-7.9166665" vertical-offset="1280" max-vertical-offset="2490">
+            <state line="25" column="28" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2505">
               <folding />
             </state>
           </provider>
@@ -103,13 +130,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/light.js" />
-        <option value="$PROJECT_DIR$/src/helper.js" />
-        <option value="$PROJECT_DIR$/src/sphere.js" />
-        <option value="$PROJECT_DIR$/src/color.js" />
-        <option value="$PROJECT_DIR$/raytracer.html" />
-        <option value="$PROJECT_DIR$/src/scene.js" />
         <option value="$PROJECT_DIR$/src/camera.js" />
+        <option value="$PROJECT_DIR$/src/helper.js" />
+        <option value="$PROJECT_DIR$/src/light.js" />
+        <option value="$PROJECT_DIR$/raytracer.html" />
+        <option value="$PROJECT_DIR$/src/color.js" />
+        <option value="$PROJECT_DIR$/src/sphere.js" />
+        <option value="$PROJECT_DIR$/src/scene.js" />
         <option value="$PROJECT_DIR$/src/raytracer.js" />
       </list>
     </option>
@@ -183,7 +210,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -233,7 +264,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2669537" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32938644" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938644" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10773809" sideWeight="0.6706136" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -261,41 +292,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="22" selection-start="3" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="653">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/raytracer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="23" selection-start="3189" selection-end="3192" vertical-scroll-proportion="-7.9166665" vertical-offset="1280" max-vertical-offset="2490">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/light.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="32" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sphere.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="6" selection-start="2565" selection-end="2565" vertical-scroll-proportion="-6.685185" vertical-offset="554" max-vertical-offset="1095">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/camera.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="2" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
@@ -303,16 +299,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/light.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="92" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raytracer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="28" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2505">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="1" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/color.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="18" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sphere.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sylvester.src.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="2780" selection-end="2780" vertical-scroll-proportion="0.4840336" vertical-offset="687" max-vertical-offset="19275">
+        <state line="867" column="0" selection-start="0" selection-end="45103" vertical-scroll-proportion="0.0" vertical-offset="12450" max-vertical-offset="19275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="6" selection-start="2528" selection-end="2528" vertical-scroll-proportion="-12.351851" vertical-offset="233" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raytracer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="4" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.62184876" vertical-offset="875" max-vertical-offset="1545">
+        <state line="54" column="0" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.61598223" vertical-offset="255" max-vertical-offset="1665">
           <folding />
         </state>
       </provider>
