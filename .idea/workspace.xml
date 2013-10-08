@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24b8da03-548b-4128-96d4-cefa9381b5c2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/color.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/light.js" afterPath="$PROJECT_DIR$/src/light.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/raytracer.html" afterPath="$PROJECT_DIR$/raytracer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/raytracer.js" afterPath="$PROJECT_DIR$/src/raytracer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene.js" afterPath="$PROJECT_DIR$/src/scene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sphere.js" afterPath="$PROJECT_DIR$/src/sphere.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eth-raytracer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +28,7 @@
       <file leaf-file-name="raytracer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raytracer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="0" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.61598223" vertical-offset="255" max-vertical-offset="1665">
+            <state line="55" column="63" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.6326304" vertical-offset="255" max-vertical-offset="1755">
               <folding />
             </state>
           </provider>
@@ -79,7 +73,7 @@
       <file leaf-file-name="scene.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="6" selection-start="2528" selection-end="2528" vertical-scroll-proportion="-12.351851" vertical-offset="233" max-vertical-offset="1080">
+            <state line="36" column="33" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-5.685185" vertical-offset="233" max-vertical-offset="1080">
               <folding />
             </state>
           </provider>
@@ -343,14 +337,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="6" selection-start="2528" selection-end="2528" vertical-scroll-proportion="-12.351851" vertical-offset="233" max-vertical-offset="1080">
+        <state line="36" column="33" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-5.685185" vertical-offset="233" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raytracer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.61598223" vertical-offset="255" max-vertical-offset="1665">
+        <state line="55" column="63" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.6326304" vertical-offset="255" max-vertical-offset="1755">
           <folding />
         </state>
       </provider>

@@ -53,6 +53,12 @@ function illuminate (intersection, light) {
     // vector from intersection-point to light-source
     var wl = light.pos.subtract(intersectionPoint).toUnitVector();
 
+    // check if point to light-source is intersected -> shadows
+    var light_intersection = intersect ($L(intersectionPoint, wl));
+    if (light_intersection[0] != null) {
+        return new Color(0,0,0);
+    }
+
     // normal of intersection-point
     var n = intersectionObject.getNormal(intersectionPoint);
 
