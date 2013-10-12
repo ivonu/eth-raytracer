@@ -23,6 +23,7 @@
     <script src="./src/light.js"></script>
     <script src="./src/camera.js"></script>
     <script src="./src/scene.js"></script>
+    <script src="./src/ray.js"></script>
     <script src="./src/color.js"></script>
     <script src="./src/helper.js"></script>
 	<!-- ... -->
@@ -31,11 +32,12 @@
 	<!-- DO NOT change the code AFTER this point unless you know what you are doing -->
 	<script type="text/javascript">
 				
-		var width = 800, height = 600; // image size
+		var width = RayConfig.width, height = RayConfig.height; // image size
 		var canv, ctx, imgData; // canvas
 		var imgBuffer; // canvas buffer
 		var pixBuffer; // color pixel buffer
-		
+
+
 		var curPixelX = 0, curPixelY = 0; // current pixel to render
 		
 		// initialization when page loads
@@ -45,6 +47,13 @@
 			imgData = ctx.createImageData(width,height);
 			imgBuffer = imgData.data;
 			pixBuffer = new Array();
+
+            document.getElementById("mainContent").style.width = RayConfig.width+"px";
+            document.getElementById("mainContent").style.height = RayConfig.height+"px";
+            document.getElementById("myCanvasDiv").style.width = RayConfig.width+"px";
+            document.getElementById("myCanvasDiv").style.height = RayConfig.height+"px";
+            document.getElementById("myCanvas").width = RayConfig.width;
+            document.getElementById("myCanvas").height = RayConfig.height;
 			
 			canv.onclick = function(e) {
 				debugPixel(e.offsetX,e.offsetY);
@@ -143,7 +152,7 @@
 
 <body onload="load()">
 
-	<div style="width: 800px; margin-left: auto; margin-right: auto;">
+	<div id="mainContent" style="width: 800px; height: 600px; margin-left: auto; margin-right: auto;">
 		<div id="myUI" style="text-align:center;">
 			<button onclick="startRendering()" style="width: 396px; height: 40px;">Render</button>
 			

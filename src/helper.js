@@ -1,5 +1,14 @@
 // Random Log function
-console.rlog = function (msg) {
-    if (Math.random() > 0.001) return;
-    console.log(msg);
+console.rlog_start = function() {
+    this.rlogging = (Math.random() < 0.001);
 }
+console.rlog = function (msg) {
+    if (this.rlogging) {
+        console.log(msg);
+    }
+}
+console.rlog_end = function() {
+    this.rlogging = false;
+}
+
+RayConfig = { width: 800, height: 600};

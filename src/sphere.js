@@ -1,10 +1,11 @@
-var Sphere = function (_center, _radius, _ambient, _diffuse, _specular, _specularExp) {
+var Sphere = function (_center, _radius, _ambient, _diffuse, _specular, _specularExp, _refraction_idx) {
     this.center = _center;
     this.radius = _radius;
     this.ambient = _ambient;
     this.diffuse = _diffuse;
     this.specular = _specular;
     this.specular_exp = _specularExp;
+    this.refraction_idx = _refraction_idx;
 };
 
 Sphere.prototype.getNormal = function (intersectionPoint) {
@@ -12,8 +13,8 @@ Sphere.prototype.getNormal = function (intersectionPoint) {
 }
 
 Sphere.prototype.intersects = function (ray) {
-    var o = ray.anchor;       // ray origin
-    var d = ray.direction;    // ray vector
+    var o = ray.line.anchor;       // ray origin
+    var d = ray.line.direction;    // ray vector
     var c = this.center;      // sphere center
     var r = this.radius;      // sphere radius
     var r2 = r*r;             // sphere radius squared

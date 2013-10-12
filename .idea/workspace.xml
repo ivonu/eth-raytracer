@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24b8da03-548b-4128-96d4-cefa9381b5c2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ray.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/color.js" afterPath="$PROJECT_DIR$/src/color.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper.js" afterPath="$PROJECT_DIR$/src/helper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/raytracer.html" afterPath="$PROJECT_DIR$/raytracer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/raytracer.js" afterPath="$PROJECT_DIR$/src/raytracer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene.js" afterPath="$PROJECT_DIR$/src/scene.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sphere.js" afterPath="$PROJECT_DIR$/src/sphere.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eth-raytracer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,16 +35,16 @@
       <file leaf-file-name="raytracer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raytracer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="63" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.6326304" vertical-offset="255" max-vertical-offset="1755">
+            <state line="139" column="14" selection-start="4636" selection-end="4636" vertical-scroll-proportion="0.7169811" vertical-offset="1705" max-vertical-offset="3285">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sylvester.src.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sylvester.src.js">
+      <file leaf-file-name="ray.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ray.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="867" column="0" selection-start="0" selection-end="45103" vertical-scroll-proportion="0.0" vertical-offset="12450" max-vertical-offset="19275">
+            <state line="2" column="42" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
               <folding />
             </state>
           </provider>
@@ -46,7 +53,7 @@
       <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/helper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="1" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+            <state line="2" column="40" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.1538461" vertical-offset="0" max-vertical-offset="300">
               <folding />
             </state>
           </provider>
@@ -55,7 +62,7 @@
       <file leaf-file-name="color.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/color.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="18" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+            <state line="9" column="66" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
               <folding />
             </state>
           </provider>
@@ -64,7 +71,7 @@
       <file leaf-file-name="sphere.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sphere.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+            <state line="11" column="0" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
               <folding />
             </state>
           </provider>
@@ -73,25 +80,7 @@
       <file leaf-file-name="scene.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="33" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-5.685185" vertical-offset="233" max-vertical-offset="1080">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="light.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/light.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="92" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="camera.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/camera.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="2" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+            <state line="88" column="24" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-15.37037" vertical-offset="490" max-vertical-offset="1425">
               <folding />
             </state>
           </provider>
@@ -100,8 +89,12 @@
       <file leaf-file-name="raytracer.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raytracer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="28" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2505">
-              <folding />
+            <state line="22" column="33" selection-start="938" selection-end="938" vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="2640">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,11 +118,12 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/camera.js" />
-        <option value="$PROJECT_DIR$/src/helper.js" />
         <option value="$PROJECT_DIR$/src/light.js" />
+        <option value="$PROJECT_DIR$/src/sphere.js" />
         <option value="$PROJECT_DIR$/raytracer.html" />
         <option value="$PROJECT_DIR$/src/color.js" />
-        <option value="$PROJECT_DIR$/src/sphere.js" />
+        <option value="$PROJECT_DIR$/src/ray.js" />
+        <option value="$PROJECT_DIR$/src/helper.js" />
         <option value="$PROJECT_DIR$/src/scene.js" />
         <option value="$PROJECT_DIR$/src/raytracer.js" />
       </list>
@@ -206,11 +200,13 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.Unnamed">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -240,9 +236,33 @@
       <browser start="false" url="" with-js-debugger="false" />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="false" name="Unnamed" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" uri="http://localhost:63342/eth-raytracer/raytracer.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Unnamed" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="24b8da03-548b-4128-96d4-cefa9381b5c2" name="Default" comment="" />
@@ -260,8 +280,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938644" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10773809" sideWeight="0.6706136" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10773809" sideWeight="0.60064584" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39935413" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -283,7 +303,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/camera.js">
@@ -300,34 +322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/raytracer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="28" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2505">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="1" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/color.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="18" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sphere.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sylvester.src.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="867" column="0" selection-start="0" selection-end="45103" vertical-scroll-proportion="0.0" vertical-offset="12450" max-vertical-offset="19275">
@@ -335,16 +329,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/raytracer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="33" selection-start="938" selection-end="938" vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="2640">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ray.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="42" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README-JS">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="11" selection-start="561" selection-end="567" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="40" selection-start="97" selection-end="97" vertical-scroll-proportion="-1.1538461" vertical-offset="0" max-vertical-offset="300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/color.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="66" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sphere.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/scene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="33" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-5.685185" vertical-offset="233" max-vertical-offset="1080">
+        <state line="88" column="24" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-15.37037" vertical-offset="490" max-vertical-offset="1425">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raytracer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="63" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.6326304" vertical-offset="255" max-vertical-offset="1755">
+        <state line="139" column="14" selection-start="4636" selection-end="4636" vertical-scroll-proportion="0.7169811" vertical-offset="1705" max-vertical-offset="3285">
           <folding />
         </state>
       </provider>
