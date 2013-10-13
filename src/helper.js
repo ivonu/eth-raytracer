@@ -10,5 +10,3 @@ console.rlog = function (msg) {
 console.rlog_end = function() {
     this.rlogging = false;
 }
-
-RayConfig = { width: 800, height: 600};

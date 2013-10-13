@@ -1,24 +1,5 @@
 "use strict";
 
-function getRay (pixelX, pixelY) {
-    var camera = scene.camera;
-
-    // translate pixels, so that 0/0 is in the center of the image
-    pixelY = -1 * pixelY + camera.height/2;
-    pixelX = pixelX - camera.width/2;
-
-    // calculate point in imagePane in 3D
-    var p = camera.imagePaneCenter.add (camera.upDirection.multiply (pixelY / camera.height * camera.imagePaneHeight));
-    p.addN (camera.rightDirection.multiply (pixelX / camera.width * camera.imagePaneWidth));
-
-    // vector from camera position to point in imagePane
-    var direction = p.subtract(camera.pos);
-
-    // return normalized vector
-    return new Ray ($L(camera.pos, direction.toUnitVector()),1);
-}
-
-
 function intersect (ray) {
     var min = Infinity;
     var min_intersection_point;
@@ -61,7 +42,7 @@ function illuminate (intersection, ray, light) {
     // 3. check if the intersection point is illuminated by each light source
     // check if point to light-source is intersected -> shadows
     var light_intersection = intersect (new Ray($L(intersectionPoint, wl), ray.refraction_idx));
-    if (light_intersection[0] != null) {
+    if (RayConfig.shadows && light_intersection[0] != null) {
         return color;
     }
 
@@ -80,8 +61,8 @@ function illuminate (intersection, ray, light) {
     var diffuse_color = intersectionObject.diffuse.multiply(E);
     var specular_highlight_color = S > 0 ? intersectionObject.specular.multiply(S*E) : color;
 
-    color.addN(diffuse_color);
-    color.addN(specular_highlight_color);
+    if (RayConfig.diffuse_illumination) color.addN(diffuse_color);
+    if (RayConfig.specular_highlights) color.addN(specular_highlight_color);
 
     return color;
 }
@@ -136,15 +117,11 @@ function getSpecularRays (ray, intersection) {
 
             F_reflect = 0.5*(p_reflect*p_reflect + p_refract*p_refract);
             F_refract = 1-F_reflect;
-
-            //console.rlog("reflect: " + F_reflect);
-            //console.rlog("refract: " + F_refract);
         }
     }
 
     return [reflectedRay, refractedRay, F_reflect, F_refract];
 }
-
 
 
 function reflect_refract (ray, intersection, depth) {
@@ -183,13 +160,13 @@ function traceRay (ray, depth) {
     if (intersection[0] !== null) {
 
         var global_ambient_color = intersection[0].ambient.multiply(scene.globalAmbientIntensity);
-        color.addN(global_ambient_color);
+        if (RayConfig.ambient_illumination) color.addN(global_ambient_color);
 
         for (var i = 0; i < scene.lights.length; i++) {
             color.addN(illuminate(intersection, ray, scene.lights[i]).multiply(1));
         }
 
-        if (depth > 0) color.addN(reflect_refract(ray, intersection, depth-1).multiply(1));
+        if (ModuleId.B1 && depth > 0) color.addN(reflect_refract(ray, intersection, depth-1).multiply(1));
     }
 
     return color;
@@ -198,10 +175,22 @@ function traceRay (ray, depth) {
 function trace(pixelX, pixelY) {
     console.rlog_start();
 
-    // 1. shoot a ray determined from the camera parameters and the pixel position in the image
-    var ray = getRay(pixelX, pixelY);
+    var color = new Color(0,0,0);
 
-    var color = traceRay(ray, 2);
+    // 1. shoot a ray determined from the camera parameters and the pixel position in the image
+    if (ModuleId.B2) {
+        // super sampling / anti-aliasing
+        var rays = getRays(pixelX, pixelY);
+        for (var i = 0; i < RayConfig.samples_per_pixel; i++) {
+            var sample_color = traceRay(rays[i], RayConfig.depth);
+            sample_color.multiplyN(1.0/RayConfig.samples_per_pixel);
+            color.addN(sample_color);
+        }
+
+    } else {
+        var ray = getRay(pixelX, pixelY);
+        color = traceRay(ray, RayConfig.depth);
+    }
 
     console.rlog_end();
 
