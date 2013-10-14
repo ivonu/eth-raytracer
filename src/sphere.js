@@ -45,8 +45,11 @@ Sphere.prototype.intersects = function (ray) {
     if (r2D2 < 0)
         return null;
 
-    var t = cod - Math.sqrt(r2D2);
-    var intersection_point = o.add(d.multiply(t));
+    var t1 = cod - Math.sqrt(r2D2);
+    var t2 = cod + Math.sqrt(r2D2);
 
-    return intersection_point;
+    if (t1 < RayConfig.intersection_delta) return t2;
+    if (t2 < RayConfig.intersection_delta) return t1;
+
+    return Math.min(t1, t2);
 }

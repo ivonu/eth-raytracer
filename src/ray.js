@@ -1,6 +1,7 @@
-var Ray = function (_line, _refraction_idx) {
+var Ray = function (_line, _refraction_idx, _power) {
     this.line = _line;
     this.refraction_idx = _refraction_idx;
+    this.power = _power;
 }
 
 function getRay (pixelX, pixelY) {
@@ -18,7 +19,7 @@ function getRay (pixelX, pixelY) {
     var direction = p.subtract(camera.pos);
 
     // return normalized vector
-    return new Ray ($L(camera.pos, direction.toUnitVector()),1);
+    return new Ray ($L(camera.pos, direction.toUnitVector()),1,1);
 }
 
 function getRays (pixelX, pixelY) {
@@ -40,7 +41,7 @@ function getRays (pixelX, pixelY) {
             // vector from camera position to point in imagePane
             var direction = p.subtract(camera.pos);
 
-            rays.push(new Ray ($L(camera.pos, direction.toUnitVector()),1));
+            rays.push(new Ray ($L(camera.pos, direction.toUnitVector()),1,1));
         }
     }
 

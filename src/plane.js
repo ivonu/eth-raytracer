@@ -14,15 +14,10 @@ Plane.prototype.getNormal = function (intersectionPoint) {
 }
 
 Plane.prototype.intersects = function (ray) {
-    var l0 = ray.line.anchor;
-    var p0 = this.point;
-    var n = this.normal;
-    var l = ray.line.direction;
-
-    var d = -( (l0.subtract(p0).dot(n)) / (l.dot(n)) );
-    d = p0.subtract(l0).dot(n) / l.dot(n);
+    var d = this.point.subtract(ray.line.anchor).dot(this.normal) /
+            ray.line.direction.dot(this.normal);
 
     if (d < 0) return null;
 
-    return l0.add(l.multiply(d));
+    return d;
 }
