@@ -67,7 +67,8 @@ Vector.prototype = {
     });
     return Vector.create(elements);
   },
-  
+
+  /*
   // Maps the vector to another vector according to the given function
   mapN: function(fn) {
     var n = this.elements.length, k = n, i;
@@ -75,6 +76,7 @@ Vector.prototype = {
       this.elements[i] = fn(this.elements[i], i+1);
     } while (--n);
   },
+  */
   
   // Calls the iterator for each element of the vector in turn
   each: function(fn) {
@@ -90,12 +92,14 @@ Vector.prototype = {
     if (r === 0) { return this.dup(); }
     return this.map(function(x) { return x/r; });
   },
-  
+
+  /*
   // Returns a new vector created by normalizing the receiver
   toUnitVectorN: function() {
     var r = this.modulus();
     this.mapN(function(x) { return x/r; });
   },
+  */
 
   // Returns the angle between the vector and the argument (also a vector)
   angleFrom: function(vector) {
@@ -156,7 +160,8 @@ Vector.prototype = {
   
   x: function(k) { return this.multiply(k); },
 
-    // Returns the result of adding the argument to the vector
+  /*
+  // Returns the result of adding the argument to the vector
   addN: function(vector) {
     var V = vector.elements || vector;
     if (this.elements.length != V.length) { return null; }
@@ -186,6 +191,8 @@ Vector.prototype = {
     if (this.elements.length != V.length) { return null; }
     this.mapN(function(x, i) { return Math.max(x,V[i-1]); });
   },
+
+  */
 
   // Returns the scalar product of the vector with the argument
   // Both vectors must have equal dimensionality

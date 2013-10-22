@@ -20,21 +20,21 @@ Sphere.prototype.intersects = function (ray) {
     var r2 = r*r;             // sphere radius squared
 
     // c-o : vector from ray origin to sphere center
-    var co = c.subtract(o);
+    var oc = c.subtract(o);
 
     // ||c-o||^2 : squared-distance from ray origin to sphere center
-    var co2 = co.dot(co);
+    var oc2 = oc.dot(oc);
 
     // (c-o)*d : compute ray distance which is closest to sphere center
-    var cod = co.dot(d);
-    var cod2 = cod*cod;
+    var ocd = oc.dot(d);
+    var ocd2 = ocd*ocd;
 
     // reject if ray is outside or points away from sphere
-    if (cod < 0)
+    if (ocd < 0)
         return null;
 
     // D^2 = ||c-o||^2 - ((c-o)*d)^2 : compute shortest squared-distance from sphere center to ray
-    var D2 = co2 - cod2;
+    var D2 = oc2 - ocd2;
 
     // reject if greater than squared radius
     if (D2 > r2)
@@ -45,8 +45,8 @@ Sphere.prototype.intersects = function (ray) {
     if (r2D2 < 0)
         return null;
 
-    var t1 = cod - Math.sqrt(r2D2);
-    var t2 = cod + Math.sqrt(r2D2);
+    var t1 = ocd - Math.sqrt(r2D2);
+    var t2 = ocd + Math.sqrt(r2D2);
 
     if (t1 < RayConfig.intersection_delta) return t2;
     if (t2 < RayConfig.intersection_delta) return t1;

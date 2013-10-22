@@ -19,6 +19,7 @@ Color.prototype.normalize = function() {
     if (this.b > 1) this.b = 1;
 }
 
+/*
 Color.prototype.subtractN = function (color) {
     this.r -= color.r;
     this.g -= color.g;
@@ -26,7 +27,9 @@ Color.prototype.subtractN = function (color) {
 
     this.normalize();
 }
+*/
 
+/*
 Color.prototype.addN = function (color) {
     this.r += color.r;
     this.g += color.g;
@@ -34,11 +37,13 @@ Color.prototype.addN = function (color) {
 
     this.normalize();
 }
+*/
 
 Color.prototype.add = function (color) {
     return new Color (this.r + color.r, this.g + color.g, this.b + color.b);
 }
 
+/*
 Color.prototype.multiplyN = function (skalar) {
     this.r *= skalar;
     this.g *= skalar;
@@ -46,6 +51,7 @@ Color.prototype.multiplyN = function (skalar) {
 
     this.normalize();
 }
+*/
 
 Color.prototype.multiply = function (skalar) {
     return new Color (this.r * skalar, this.g * skalar, this.b * skalar);
@@ -56,6 +62,7 @@ Color.prototype.multiplyColor = function (color) {
     return new Color (this.r * color.r, this.g * color.g, this.b * color.b);
 }
 
+/*
 Color.prototype.multiplyColorN = function (color) {
     this.r *= color.r;
     this.g *= color.g;
@@ -63,3 +70,4 @@ Color.prototype.multiplyColorN = function (color) {
 
     this.normalize();
 }
+*/

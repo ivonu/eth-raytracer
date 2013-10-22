@@ -13,7 +13,7 @@ function getRay (pixelX, pixelY) {
 
     // calculate point in imagePane in 3D
     var p = camera.imagePaneCenter.add (camera.upDirection.multiply (pixelY / camera.height * camera.imagePaneHeight));
-    p.addN (camera.rightDirection.multiply (pixelX / camera.width * camera.imagePaneWidth));
+    p = p.add (camera.rightDirection.multiply (pixelX / camera.width * camera.imagePaneWidth));
 
     // vector from camera position to point in imagePane
     var direction = p.subtract(camera.pos);
@@ -36,7 +36,7 @@ function getRays (pixelX, pixelY) {
 
             // calculate point in imagePane in 3D
             var p = camera.imagePaneCenter.add (camera.upDirection.multiply (new_pixelY / camera.height * camera.imagePaneHeight));
-            p.addN (camera.rightDirection.multiply (new_pixelX / camera.width * camera.imagePaneWidth));
+            p = p.add (camera.rightDirection.multiply (new_pixelX / camera.width * camera.imagePaneWidth));
 
             // vector from camera position to point in imagePane
             var direction = p.subtract(camera.pos);
