@@ -13,7 +13,12 @@ var ModuleId = {
 	C2: false, //... texture mapping
 	C3: false, //... meshes
 	D1: false, //... octree
-	D2: false  //... area light
+	D2: false,  //... area light
+    X1: false,  //...
+    X2: false,  //...
+    X3: false,  //...
+    X4: false,  //...
+    X5: false  //...
 };
 
 if(document.location.toString().indexOf('?') != -1) {
@@ -30,6 +35,11 @@ if(document.location.toString().indexOf('?') != -1) {
 			case "C3": ModuleId.C3 = true; break;
 			case "D1": ModuleId.D1 = true; break;
 			case "D2": ModuleId.D2 = true; break;
+            case "X1": ModuleId.X1 = true; break;
+            case "X2": ModuleId.X2 = true; break;
+            case "X3": ModuleId.X3 = true; break;
+            case "X4": ModuleId.X4 = true; break;
+            case "X5": ModuleId.X5 = true; break;
 		}
     }
 }

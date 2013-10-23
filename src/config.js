@@ -9,6 +9,6 @@ RayConfig = {
     global_ambient_illumination: true,
     samples_per_pixel: 16,
     samples_per_axis: 4,
-    intersection_delta: 0.000001
+    intersection_delta: 0.0000000001
 };
 

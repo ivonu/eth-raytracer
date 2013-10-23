@@ -40,6 +40,7 @@ function illuminate (intersection, ray, light) {
     // check if point to light-source is intersected -> shadows
     var light_intersection = intersect (new Ray($L(intersectionPoint, wl), ray.refraction_idx, ray.power));
     if (RayConfig.shadows && light_intersection[0] != null) {
+        // if (light_intersection[0].refraction_idx !== Infinity) light refraction through object
         return color;
     }
 
@@ -118,7 +119,7 @@ function getSpecularRays (ray, intersection) {
             reflectedRay.power = reflectedRay.power * F_reflect;
             refractedRay.power = refractedRay.power * F_refract;
 
-            if (false || reflectedRay.power > 0.5) {
+            if (true || reflectedRay.power > 0.5) {
                 console.rlog("---");
                 console.rlog("POWER: " + ray.power);
                 //console.rlog("in-cos: " + w_dot_n);

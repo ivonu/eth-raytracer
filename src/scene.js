@@ -23,16 +23,15 @@ function loadScene() {
     loadDefaultCamera();
     loadDefaultLight();
 
-
     if (ModuleId.B3) {
         loadB3();
     } else if (ModuleId.B4) {
         loadB4();
+    } else if (ModuleId.X1) {
+        loadAdditionalStuff();
     } else {
         loadA1();
     }
-
-    loadAdditionalStuff();
 
     console.log("scene loaded");
 }
@@ -88,7 +87,8 @@ function loadB3() {
 
     var cylinder = new Cylinder (
         $V([0,0,0]),           // axis line
-        $V([2,0,1]),           // radii
+        false,true,false,      // fixed x,y,z axis
+        2,0,1,                 // radii
         new Color(0.75,0,0),   // ambient material color
         new Color(1,0,0),      // diffuse material color
         new Color(1,1,1),      // specular material color
@@ -96,18 +96,15 @@ function loadB3() {
         Infinity);             // refraction index
 
     var ellipsoid = new Ellipsoid (
-        $V([0,0,0]),           // center
-        $V([1,0,0]).toUnitVector(),            // x-axis
-        $V([0,1,0]).toUnitVector(),            // y-axis
-        $V([0,0,1]).toUnitVector(),            // z-axis
-        2,2,2,                 // x,y,z radii
+        $V([1.25,1.25,3]),           // center
+        0.25,0.75,0.5,                 // x,y,z radii
         new Color(0,0,0.75),   // ambient material color
         new Color(0,0,1),      // diffuse material color
         new Color(0.5,0.5,1),      // specular material color
         16.0,                  // specular exponent
-        Infinity);             // refraction index
+        1.5);             // refraction index
 
-    //scene.addObject(cylinder);
+    scene.addObject(cylinder);
     scene.addObject(ellipsoid);
 }
 
@@ -139,7 +136,7 @@ function loadAdditionalStuff() {
         51.2,               // specular exponent
         Infinity);               // refraction index
 
-    var p1 = new Plane ($V([0,-11,0]), // point on plane
+    var p1 = new Plane ($V([0,-3,0]), // point on plane
         $V([0,1,0]).toUnitVector(),                // normal
         new Color(0.75, 0.75, 0.75),   // ambient material color
         new Color(1, 1, 1),   // diffuse material color
@@ -147,44 +144,9 @@ function loadAdditionalStuff() {
         10,               // specular exponent
         Infinity);               // refraction index
 
-    var p2 = new Plane ($V([-11,0,0]), // point on plane
-        $V([1,0,0]).toUnitVector(),                // normal
-        new Color(0.75, 0.75, 0.75),   // ambient material color
-        new Color(1, 1, 1),   // diffuse material color
-        new Color(1, 1, 1),   // specular material color
-        10,               // specular exponent
-        Infinity);               // refraction index
-
-    var p3 = new Plane ($V([11,0,0]), // point on plane
-        $V([-1,0,0]).toUnitVector(),                // normal
-        new Color(0.75, 0.75, 0.75),   // ambient material color
-        new Color(1, 1, 1),   // diffuse material color
-        new Color(1, 1, 1),   // specular material color
-        10,               // specular exponent
-        Infinity);               // refraction index
-
-    var p4 = new Plane ($V([0,0,-11]), // point on plane
-        $V([0,0,1]).toUnitVector(),                // normal
-        new Color(0.75, 0.75, 0.75),   // ambient material color
-        new Color(1, 1, 1),   // diffuse material color
-        new Color(1, 1, 1),   // specular material color
-        10,               // specular exponent
-        Infinity);               // refraction index
-
-    var p5 = new Plane ($V([0,11,0]), // point on plane
-        $V([0,-1,0.1]).toUnitVector(),                // normal
-        new Color(0.75, 0.75, 0.75),   // ambient material color
-        new Color(1, 1, 1),   // diffuse material color
-        new Color(1, 1, 1),   // specular material color
-        10,               // specular exponent
-        Infinity);               // refraction index
-
-    //scene.addLight(light2);
-    //scene.addObject(s3);
-    //scene.addObject(s4);
-    //scene.addObject(p1);
-    //scene.addObject(p2);
-    //scene.addObject(p3);
-    //scene.addObject(p4);
-    //scene.addObject(p5);
+    scene.lights = [];
+    scene.addLight(light2);
+    scene.addObject(s3);
+    scene.addObject(s4);
+    scene.addObject(p1);
 }
