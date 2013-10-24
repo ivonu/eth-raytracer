@@ -52,7 +52,6 @@ function illuminate (intersection, ray, light) {
 
     // view-direction
     var w = intersectionPoint.subtract (ray.line.anchor).toUnitVector();
-    //var w = ray.line.anchor.subtract (intersectionPoint).toUnitVector();
 
     // ray-reflection-direction: wr = 2n(w*n) - w
     var wr = n.multiply (2 * n.dot (w)).subtract (w).toUnitVector();
@@ -95,8 +94,6 @@ function getSpecularRays (ray, intersection) {
     var wr = n.multiply (2 * w_dot_n).subtract (w).toUnitVector();
     var reflectedRay = new Ray($L(intersectionPoint, wr), ray.refraction_idx, ray.power);
 
-    //console.log("reflect_angle: " + Math.acos(wr.dot(n))/Math.PI*180);
-
     // ===== refraction =====
     var refractedRay = null;
     var n1 = ray.refraction_idx;
@@ -120,23 +117,11 @@ function getSpecularRays (ray, intersection) {
             var p_refract = (n1*cos1 - n2*cos2) / (n1*cos1 + n2*cos2);
 
             var F_reflect = 0.5*(p_reflect*p_reflect + p_refract*p_refract);
+            //F_reflect = 0;
             var F_refract = 1-F_reflect;
 
             reflectedRay.power = reflectedRay.power * F_reflect;
             refractedRay.power = refractedRay.power * F_refract;
-
-            if (true || reflectedRay.power > 0.5) {
-                console.rlog("---");
-                console.rlog("POWER: " + ray.power);
-                //console.rlog("in-cos: " + w_dot_n);
-                //console.rlog("in_angle: " + Math.acos(w_dot_n*-1)/Math.PI*180);
-                //console.rlog("reflect-cos: " + cos1);
-                console.rlog("reflect_angle: " + Math.acos(cos1)/Math.PI*180);
-                //console.rlog("refract-cos: " + cos2);
-                console.rlog("refract_angle: " + Math.acos(cos2)/Math.PI*180);
-                //console.rlog("REFLECT: " + reflectedRay.power);
-                //console.rlog("REFRACT: " + refractedRay.power);
-            }
         }
     }
 
@@ -151,12 +136,12 @@ function reflect_refract (ray, intersection, depth) {
 
     var inside = ray.refraction_idx !== 1;
 
-    if (rays[0] !== null) {
+    if (RayConfig.reflection && rays[0] !== null) {
         var specular_reflected_color = traceRay(rays[0], depth);
         specular_reflected_color = specular_reflected_color.multiplyColor(intersection[0].specular);
         color = color.add(specular_reflected_color.multiply(rays[0].power));
     }
-    if (rays[1] !== null) {
+    if (RayConfig.refraction && rays[1] !== null) {
         var specular_refraction_color = traceRay(rays[1], depth);
         if (!inside) specular_refraction_color = specular_refraction_color.multiplyColor(intersection[0].specular);
         color = color.add(specular_refraction_color.multiply(rays[1].power));

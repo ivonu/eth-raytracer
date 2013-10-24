@@ -14,14 +14,14 @@ var Ellipsoid = function (_center, _radius_x, _radius_y, _radius_z, _ambient, _d
 
 Ellipsoid.prototype.getNormal = function (intersectionPoint) {
 
-    var normal = intersectionPoint.subtract(this.center);
 
     var t = $M([
-        [2.0 / (this.radius_x * this.radius_x), 0, 0],
-        [0, 2.0 / (this.radius_y * this.radius_y), 0],
-        [0, 0, 2.0 / (this.radius_z * this.radius_z)]
+        [2 / (this.radius_x * this.radius_x), 0, 0],
+        [0, 2 / (this.radius_y * this.radius_y), 0],
+        [0, 0, 2 / (this.radius_z * this.radius_z)]
     ]);
 
+    var normal = intersectionPoint.subtract(this.center);
     normal = t.multiply(normal);
 
     return normal.toUnitVector();
@@ -49,7 +49,7 @@ Ellipsoid.prototype.intersects = function (ray) {
         - 1;
 
     var under_root = ((b*b)-(4.0*a*c));
-    if (under_root < 0 || a == 0 || b == 0 || c == 0)
+    if (under_root < 0 || a == 0 || b == 0) // || c == 0)
         return null;
 
     var root = Math.sqrt(under_root);

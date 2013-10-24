@@ -79,7 +79,18 @@ function loadA1() {
         16.0,                  // specular exponent
         1.5);                  // refraction index
 
+
+    var ellipsoid = new Ellipsoid (
+        $V([1.25,1.25,3]),           // center
+        0.5,0.5,0.5,                 // x,y,z radii
+        new Color(0,0,0.75),   // ambient material color
+        new Color(0,0,1),      // diffuse material color
+        new Color(0.5,0.5,1),      // specular material color
+        16.0,                  // specular exponent
+        1.5);             // refraction index
+
     scene.addObject(s1);
+    //scene.addObject(ellipsoid);
     scene.addObject(s2);
 }
 
@@ -104,8 +115,28 @@ function loadB3() {
         16.0,                  // specular exponent
         1.5);             // refraction index
 
+    var ellipsoid2 = new Ellipsoid (
+        $V([-2,0,4]),           // center
+        0.5,0.5,0.5,                 // x,y,z radii
+        new Color(0,0,0.75),   // ambient material color
+        new Color(0,0,1),      // diffuse material color
+        new Color(0.5,0.5,1),      // specular material color
+        16.0,                  // specular exponent
+        1.5);             // refraction index
+
+    var ellipsoid3 = new Ellipsoid (
+        $V([1.25,1.25,3]),           // center
+        0.25,0.75,0.5,                 // x,y,z radii
+        new Color(0,0,0.75),   // ambient material color
+        new Color(0,0,1),      // diffuse material color
+        new Color(0.5,0.5,1),      // specular material color
+        16.0,                  // specular exponent
+        1.5);             // refraction index
+
     scene.addObject(cylinder);
     scene.addObject(ellipsoid);
+    //scene.addObject(ellipsoid2);
+    //scene.addObject(ellipsoid3);
 }
 
 function loadB4() {
@@ -180,9 +211,9 @@ function loadAdditionalStuff() {
         10,               // specular exponent
         Infinity);               // refraction index
 
-    scene.lights = [];
+    //scene.lights = [];
     scene.addLight(light2);
-    scene.addObject(s3);
-    scene.addObject(s4);
-    scene.addObject(p1);
+    //scene.addObject(s3);
+    //scene.addObject(s4);
+    //scene.addObject(p1);
 }

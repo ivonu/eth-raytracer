@@ -18,20 +18,14 @@ var Cylinder = function (_axis_line, _fixed_x, _fixed_y, _fixed_z, _radius_x, _r
 
 Cylinder.prototype.getNormal = function (intersectionPoint) {
 
-    var int = $V([
-        (this.fixed_x ? 0 : intersectionPoint.e(1) / this.radius_x * this.radius_x),
-        (this.fixed_y ? 0 : intersectionPoint.e(2) / this.radius_y * this.radius_y),
-        (this.fixed_z ? 0 : intersectionPoint.e(3) / this.radius_z * this.radius_z)
+    var t = $M([
+        [(this.fixed_x ? 0 : 2 / (this.radius_x * this.radius_x)), 0, 0],
+        [0, (this.fixed_y ? 0 : 2 / (this.radius_y * this.radius_y)), 0],
+        [0, 0, (this.fixed_z ? 0 : 2 / (this.radius_z * this.radius_z))]
     ]);
 
-
-    var cent = $V([
-        (this.fixed_x ? 0 : this.axis_line.e(1)),
-        (this.fixed_y ? 0 : this.axis_line.e(2)),
-        (this.fixed_z ? 0 : this.axis_line.e(3))
-    ]);
-
-    var normal = int.subtract(cent);
+    var normal = intersectionPoint.subtract(this.axis_line);
+    normal = t.multiply(normal);
 
     return normal.toUnitVector();
 }
@@ -58,7 +52,7 @@ Cylinder.prototype.intersects = function (ray) {
         - 1;
 
     var under_root = ((b*b)-(4.0*a*c));
-    if (under_root < 0 || a == 0 || b == 0 || c == 0)
+    if (under_root < 0 || a == 0 || b == 0)// || c == 0)
         return null;
 
     var root = Math.sqrt(under_root);
