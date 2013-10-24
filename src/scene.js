@@ -131,13 +131,17 @@ function loadB4() {
 
 
 
-    var s1 = new Sphere (
-        $V([-1,0,-2]),           // center
+    var s1 = new Hemisphere (
+        $V([0,0,0]),           // center
         2,                     // radius
-        new Color(0.75,0,0),   // ambient material color
-        new Color(1,0,0),      // diffuse material color
-        new Color(1,1,1),      // specular material color
-        32.0,                  // specular exponent
+        new Color(0.75,0,0),   // exterior ambient material color
+        new Color(1,0,0),      // exterior diffuse material color
+        new Color(1,1,1),      // exterior specular material color
+        32.0,                  // exterior specular exponent
+        new Color(0.75,0.75,0),// interior ambient material color
+        new Color(1,1,0),      // interior diffuse material color
+        new Color(1,1,1),      // interior specular material color
+        32.0,                  // interior specular exponent
         Infinity);             // refraction index
 
     scene.addObject(s1);
