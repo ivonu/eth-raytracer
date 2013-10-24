@@ -141,24 +141,43 @@ function loadB3() {
 
 function loadB4() {
     var int = new Intersection(
+        new Sphere (
+            $V([1.25,1.25,3]),
+            0.5,
+            null, null, null, null, null
+        ),
+        new Sphere (
+            $V([0.25,1.25,3]),
+            1,
+            null, null, null, null, null
+        ),
         new Color(0,0,0.75),   // ambient material color
         new Color(0,0,1),      // diffuse material color
         new Color(0.5,0.5,1),      // specular material color
         16.0,                  // specular exponent
         1.5             // refraction index
     );
-    int.addObject(new Sphere (
-        $V([1.25,1.25,3]),
-        0.5,
-        null, null, null, null, null
-    ));
-    int.addObject(new Sphere (
-        $V([0.25,1.25,3]),
-        1,
-        null, null, null, null, null
-    ));
+    //scene.addObject(int);
 
-    scene.addObject(int);
+    var int2 = new Intersection(
+        new Sphere (
+            $V([0.5,0.5,0]),
+            1,
+            null, null, null, null, null
+        ),
+        new Sphere (
+            $V([0,0,0]),
+            1,
+            null, null, null, null, null
+        ),
+        new Color(0,0,0.75),   // ambient material color
+        new Color(0,0,1),      // diffuse material color
+        new Color(0.5,0.5,1),      // specular material color
+        16.0,                  // specular exponent
+        1.5             // refraction index
+    );
+
+    scene.addObject(int2);
 
 
 
@@ -175,7 +194,7 @@ function loadB4() {
         32.0,                  // interior specular exponent
         Infinity);             // refraction index
 
-    scene.addObject(s1);
+    //scene.addObject(s1);
 
 }
 

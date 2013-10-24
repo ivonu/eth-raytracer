@@ -1,61 +1,34 @@
-var Intersection = function (_ambient, _diffuse, _specular, _specularExp, _refraction_idx) {
+var Intersection = function (_object1, _object2, _ambient, _diffuse, _specular, _specularExp, _refraction_idx) {
     this.ambient = _ambient;
     this.diffuse = _diffuse;
     this.specular = _specular;
     this.specular_exp = _specularExp;
     this.refraction_idx = _refraction_idx;
 
-    this.objects = [];
+    this.object1 = _object1;
+    this.object2 = _object2;
 };
 
-Intersection.prototype.addObject = function (object) {
-    this.objects.push(object);
-}
-
 Intersection.prototype.intersects = function (ray) {
+
     var inside = (ray.refraction_idx !== 1);
 
-    var min_inner_intersection = null;
+    var intersection1 = this.object1.intersects(ray);
+    var intersection2 = this.object2.intersects(ray);
 
-    var min_outer_intersection = null;
-    var max_outer_intersection = null;
+    // ray intersects just one object
+    if (intersection1 === null || intersection2 === null) return null;
 
-    for (var i = 0; i < this.objects.length; i++) {
-        var intersection = this.objects[i].intersects(ray);
-
-        if (intersection !== null) {
-
-            if (!inside) {
-                // check if object is nearer than the last one
-                if (min_inner_intersection === null || (intersection[0] !== null && intersection[0] > RayConfig.intersection_delta && intersection[0] < min_inner_intersection[0])) {
-                    min_inner_intersection = intersection;
-                }
-
-            } else {
-
-                // get furthers outer intersection
-                if (max_outer_intersection === null || (intersection[2] !== null && intersection[2] > RayConfig.intersection_delta && intersection[2] > max_outer_intersection[2])) {
-                    max_outer_intersection = intersection;
-                }
-                // get nearest outer intersection
-                if (min_outer_intersection === null || (intersection[2] !== null && intersection[2] > RayConfig.intersection_delta && intersection[2] < min_outer_intersection[2])) {
-                    min_outer_intersection = intersection;
-                }
-
-                // get nearest inner intersection
-                if (min_inner_intersection === null || (intersection[0] !== null && intersection[0] > RayConfig.intersection_delta && intersection[0] < min_inner_intersection[0])) {
-                    min_inner_intersection = intersection;
-                }
-            }
-        }
+    if (intersection2[0] < intersection1[0]) {
+        var tmp = intersection1;
+        intersection1 = intersection2;
+        intersection2 = tmp;
     }
 
-    var intersection = min_inner_intersection;
+    // second object starts after first object ends
+    if (intersection1[2] < intersection2[0]) return null;
 
-    if (inside) {
-        if (min_inner_intersection !== null && min_outer_intersection[2] < min_inner_intersection[0]) intersection = min_outer_intersection;
-        else intersection = max_outer_intersection;
-    }
+    var intersection = intersection2;
 
     return intersection;
 }
