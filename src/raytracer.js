@@ -57,11 +57,11 @@ function illuminate (intersection, ray, light) {
     var wr = n.multiply (2 * n.dot (w)).subtract (w).toUnitVector();
 
     var E = light.diffuseIntensity * n.dot(wl);
-    var S = Math.pow(wr.dot(wl), intersectionObject.specular_exp) / n.dot(wl);
+    var S = Math.pow(wr.dot(wl), intersectionObject.material.specular_exp) / n.dot(wl);
 
-    var ambient_color = intersectionObject.ambient.multiply(light.ambientIntensity);
-    var diffuse_color = intersectionObject.diffuse.multiply(E);
-    var specular_highlight_color = S > 0 ? intersectionObject.specular.multiply(S*E) : color;
+    var ambient_color = intersectionObject.material.ambient.multiply(light.ambientIntensity);
+    var diffuse_color = intersectionObject.material.diffuse.multiply(E);
+    var specular_highlight_color = S > 0 ? intersectionObject.material.specular.multiply(S*E) : color;
 
     if (RayConfig.ambient_illumination) color = color.add(ambient_color);
     if (RayConfig.diffuse_illumination) color = color.add(diffuse_color);
@@ -97,7 +97,7 @@ function getSpecularRays (ray, intersection) {
     // ===== refraction =====
     var refractedRay = null;
     var n1 = ray.refraction_idx;
-    var n2 = inside ? 1 : intersectionObject.refraction_idx;
+    var n2 = inside ? 1 : intersectionObject.material.refraction_idx;
     var ref = n1/n2;
 
     if (n2 !== Infinity) {
@@ -138,12 +138,12 @@ function reflect_refract (ray, intersection, depth) {
 
     if (RayConfig.reflection && rays[0] !== null) {
         var specular_reflected_color = traceRay(rays[0], depth);
-        specular_reflected_color = specular_reflected_color.multiplyColor(intersection[0].specular);
+        specular_reflected_color = specular_reflected_color.multiplyColor(intersection[0].material.specular);
         color = color.add(specular_reflected_color.multiply(rays[0].power));
     }
     if (RayConfig.refraction && rays[1] !== null) {
         var specular_refraction_color = traceRay(rays[1], depth);
-        if (!inside) specular_refraction_color = specular_refraction_color.multiplyColor(intersection[0].specular);
+        if (!inside) specular_refraction_color = specular_refraction_color.multiplyColor(intersection[0].material.specular);
         color = color.add(specular_refraction_color.multiply(rays[1].power));
     }
 
@@ -163,7 +163,7 @@ function traceRay (ray, depth) {
     // 4. shade the intersection point using the material attributes and the lighting
     if (intersection[0] !== null) {
 
-        var global_ambient_color = intersection[0].ambient.multiply(scene.globalAmbientIntensity);
+        var global_ambient_color = intersection[0].material.ambient.multiply(scene.globalAmbientIntensity);
         if (RayConfig.global_ambient_illumination) color = color.add(global_ambient_color);
 
         for (var i = 0; i < scene.lights.length; i++) {

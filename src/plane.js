@@ -1,12 +1,8 @@
-var Plane = function (_point, _normal, _ambient, _diffuse, _specular, _specularExp, _refraction_idx) {
+var Plane = function (_point, _normal, _material) {
     this.point = _point;
     this.normal = _normal;
 
-    this.ambient = _ambient;
-    this.diffuse = _diffuse;
-    this.specular = _specular;
-    this.specular_exp = _specularExp;
-    this.refraction_idx = _refraction_idx;
+    this.material = _material
 };
 
 Plane.prototype.getNormal = function (intersectionPoint) {

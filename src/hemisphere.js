@@ -1,11 +1,9 @@
-var Hemisphere = function (_center, _radius, _ambient, _diffuse, _specular, _specularExp, _inner_ambient, _inner_diffuse, _inner_specular, _inner_specularExp, _refraction_idx) {
+var Hemisphere = function (_center, _radius, _material, _material2) {
     this.center = _center;
     this.radius = _radius;
-    this.ambient = _ambient;
-    this.diffuse = _diffuse;
-    this.specular = _specular;
-    this.specular_exp = _specularExp;
-    this.refraction_idx = _refraction_idx;
+
+    this.material = _material
+    this.material2 = _material2
 };
 
 Hemisphere.prototype.getNormal = function (intersectionPoint) {

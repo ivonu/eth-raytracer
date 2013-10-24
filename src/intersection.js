@@ -1,9 +1,5 @@
-var Intersection = function (_object1, _object2, _ambient, _diffuse, _specular, _specularExp, _refraction_idx) {
-    this.ambient = _ambient;
-    this.diffuse = _diffuse;
-    this.specular = _specular;
-    this.specular_exp = _specularExp;
-    this.refraction_idx = _refraction_idx;
+var Intersection = function (_object1, _object2, _material) {
+    this.material = _material
 
     this.object1 = _object1;
     this.object2 = _object2;

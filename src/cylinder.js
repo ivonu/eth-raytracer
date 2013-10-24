@@ -1,4 +1,4 @@
-var Cylinder = function (_axis_line, _fixed_x, _fixed_y, _fixed_z, _radius_x, _radius_y, _radius_z, _ambient, _diffuse, _specular, _specularExp, _refraction_idx) {
+var Cylinder = function (_axis_line, _fixed_x, _fixed_y, _fixed_z, _radius_x, _radius_y, _radius_z, _material) {
     this.axis_line = _axis_line;
 
     this.fixed_x = _fixed_x;
@@ -9,11 +9,7 @@ var Cylinder = function (_axis_line, _fixed_x, _fixed_y, _fixed_z, _radius_x, _r
     this.radius_y = _radius_y;
     this.radius_z = _radius_z;
 
-    this.ambient = _ambient;
-    this.diffuse = _diffuse;
-    this.specular = _specular;
-    this.specular_exp = _specularExp;
-    this.refraction_idx = _refraction_idx;
+    this.material = _material
 };
 
 Cylinder.prototype.getNormal = function (intersectionPoint) {
