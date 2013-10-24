@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24b8da03-548b-4128-96d4-cefa9381b5c2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/intersection.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cylinder.js" afterPath="$PROJECT_DIR$/src/cylinder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ellipsoid.js" afterPath="$PROJECT_DIR$/src/ellipsoid.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hemisphere.js" afterPath="$PROJECT_DIR$/src/hemisphere.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/plane.js" afterPath="$PROJECT_DIR$/src/plane.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/raytracer.html" afterPath="$PROJECT_DIR$/raytracer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/raytracer.js" afterPath="$PROJECT_DIR$/src/raytracer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene.js" afterPath="$PROJECT_DIR$/src/scene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sphere.js" afterPath="$PROJECT_DIR$/src/sphere.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eth-raytracer.iws" />
@@ -37,7 +31,7 @@
       <file leaf-file-name="raytracer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/raytracer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="58" selection-start="1945" selection-end="1945" vertical-scroll-proportion="-7.0384617" vertical-offset="612" max-vertical-offset="2985">
+            <state line="11" column="0" selection-start="313" selection-end="313" vertical-scroll-proportion="-6.3461537" vertical-offset="0" max-vertical-offset="2985">
               <folding />
             </state>
           </provider>
@@ -55,7 +49,7 @@
       <file leaf-file-name="intersection.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/intersection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="615">
+            <state line="33" column="0" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
               <folding />
             </state>
           </provider>
@@ -73,7 +67,7 @@
       <file leaf-file-name="hemisphere.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hemisphere.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+            <state line="28" column="31" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
               <folding />
             </state>
           </provider>
@@ -100,7 +94,16 @@
       <file leaf-file-name="scene.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="17" selection-start="6142" selection-end="6142" vertical-scroll-proportion="0.17924528" vertical-offset="2635" max-vertical-offset="3615">
+            <state line="235" column="6" selection-start="8298" selection-end="8298" vertical-scroll-proportion="0.8018868" vertical-offset="3100" max-vertical-offset="3630">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="13" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
               <folding />
             </state>
           </provider>
@@ -109,7 +112,7 @@
       <file leaf-file-name="plane.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plane.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+            <state line="14" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
               <folding />
             </state>
           </provider>
@@ -145,9 +148,9 @@
         <option value="$PROJECT_DIR$/src/cylinder.js" />
         <option value="$PROJECT_DIR$/src/ellipsoid.js" />
         <option value="$PROJECT_DIR$/src/TwoObjectIntersection.js" />
-        <option value="$PROJECT_DIR$/src/plane.js" />
         <option value="$PROJECT_DIR$/src/raytracer.js" />
         <option value="$PROJECT_DIR$/src/hemisphere.js" />
+        <option value="$PROJECT_DIR$/src/plane.js" />
         <option value="$PROJECT_DIR$/src/scene.js" />
       </list>
     </option>
@@ -361,7 +364,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="52" />
+      <option name="time" value="57" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -375,13 +378,6 @@
     <entry file="file://$PROJECT_DIR$/src/helper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="20" selection-start="77" selection-end="77" vertical-scroll-proportion="0.056603774" vertical-offset="0" max-vertical-offset="530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <folding />
         </state>
       </provider>
@@ -414,23 +410,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TwoObjectIntersection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="39" selection-start="693" selection-end="698" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="630">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Material.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="38" selection-start="217" selection-end="260" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/intersection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="615">
           <folding />
         </state>
       </provider>
@@ -442,13 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/raytracer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="58" selection-start="1945" selection-end="1945" vertical-scroll-proportion="-7.0384617" vertical-offset="612" max-vertical-offset="2985">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sphere.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
@@ -456,23 +431,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TwoObjectIntersection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="39" selection-start="693" selection-end="698" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intersection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/raytracer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="313" selection-end="313" vertical-scroll-proportion="-6.3461537" vertical-offset="0" max-vertical-offset="2985">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/hemisphere.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+        <state line="28" column="31" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plane.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+        <state line="14" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="17" selection-start="6142" selection-end="6142" vertical-scroll-proportion="0.17924528" vertical-offset="2635" max-vertical-offset="3615">
+        <state line="235" column="6" selection-start="8298" selection-end="8298" vertical-scroll-proportion="0.8018868" vertical-offset="3100" max-vertical-offset="3630">
           <folding />
         </state>
       </provider>

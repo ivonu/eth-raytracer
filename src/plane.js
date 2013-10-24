@@ -10,10 +10,14 @@ Plane.prototype.getNormal = function (intersectionPoint) {
 }
 
 Plane.prototype.intersects = function (ray) {
-    var d = this.point.subtract(ray.line.anchor).dot(this.normal) /
-            ray.line.direction.dot(this.normal);
 
-    if (d < 0) return null;
+    var cos = ray.line.direction.dot(this.normal);
+
+    if (cos === 0) return null;
+
+    var d = this.point.subtract(ray.line.anchor).dot(this.normal) / cos;
+
+    if (d < RayConfig.intersection_delta) return null;
 
     var intersection = new Intersection(
         ray,

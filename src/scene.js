@@ -33,6 +33,7 @@ function loadScene() {
         loadA1();
     }
     loadAdditionalStuff();
+
     console.log("scene loaded");
 }
 
@@ -180,7 +181,7 @@ function loadB4() {
         ),
         new Plane (
             $V([0,0,0]),
-            $V([-1,0,1]).toUnitVector(),
+            $V([-1,1,1]).toUnitVector(),
             new Material (
                 new Color(0.75,0.75,0),// interior ambient material color
                 new Color(1,1,0),      // interior diffuse material color
@@ -201,7 +202,7 @@ function loadAdditionalStuff() {
         1,                   // diffuse intensity
         1);                  // specular intensity
 
-    var s3 = new Sphere ($V([0,-1,-5]),     // center
+    var s3 = new Sphere ($V([0,-1,-2]),     // center
         1.5,                // radius
         new Material(
             new Color(0,0,0),   // ambient material color
@@ -210,8 +211,8 @@ function loadAdditionalStuff() {
             30.0,               // specular exponent
             1.5));               // refraction index
 
-    var s4 = new Sphere ($V([-2,-2.4,-1]),     // center
-        0.5,                // radius
+    var s4 = new Sphere ($V([-1.5,-1,-3]),     // center
+        1,                // radius
         new Material(
             new Color(0.24725, 0.1995, 0.0745),   // ambient material color
             new Color(0.75164, 0.60648, 0.22648),   // diffuse material color

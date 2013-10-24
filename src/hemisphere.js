@@ -16,12 +16,16 @@ Hemisphere.prototype.intersects = function (ray) {
     // just one intersection
     if (sphereIntersection === null || planeIntersection === null) return null;
 
-    // sphere before plane intersection
+    // sphere before plane intersection -> miss
     if (sphereIntersection.distance < planeIntersection.distance && sphereIntersection.distance2 < planeIntersection.distance) return null;
 
+    // plane before sphere intersection -> intersection on sphere
     if (sphereIntersection.distance > planeIntersection.distance && sphereIntersection.distance2 > planeIntersection.distance) return sphereIntersection;
 
+    // plane between sphere intersections -> intersection on plane
     if (sphereIntersection.distance < planeIntersection.distance && sphereIntersection.distance2 > planeIntersection.distance) return planeIntersection;
 
+    // should never come here
+    throw "Should not happen!";
     return planeIntersection;
 }
