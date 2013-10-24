@@ -59,16 +59,14 @@ Cylinder.prototype.intersects = function (ray) {
     // no intersection (or just self-intersection)
     if (t1 < RayConfig.intersection_delta && t2 < RayConfig.intersection_delta) return null;
 
-    var t_min = 0;
-    var t_max = 0;
+    var intersection = new Intersection(
+        ray,
+        t1,
+        t2,
+        this,
+        this,
+        this.material
+    )
 
-    // just one intersection (or self-intersection)
-    if (t1 < RayConfig.intersection_delta && t2 >= RayConfig.intersection_delta) { t_min = t2; t_max = t2; }
-    if (t2 < RayConfig.intersection_delta && t1 >= RayConfig.intersection_delta) { t_min = t1; t_max = t1; }
-
-    // two intersections
-    if (t1 >= RayConfig.intersection_delta && t2 >= RayConfig.intersection_delta) { t_min = Math.min(t1, t2); t_max = Math.max(t1, t2); }
-
-
-    return [t_min, this.getNormal(ray.line.anchor.add(ray.line.direction.multiply(t_min))), t_max];
+    return intersection;
 }

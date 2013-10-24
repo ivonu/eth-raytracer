@@ -15,5 +15,14 @@ Plane.prototype.intersects = function (ray) {
 
     if (d < 0) return null;
 
-    return [d, this.normal, d];
+    var intersection = new Intersection(
+        ray,
+        d,
+        0,
+        this,
+        this,
+        this.material
+    )
+
+    return intersection;
 }

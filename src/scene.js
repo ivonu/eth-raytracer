@@ -32,7 +32,7 @@ function loadScene() {
     } else {
         loadA1();
     }
-
+    loadAdditionalStuff();
     console.log("scene loaded");
 }
 
@@ -147,7 +147,7 @@ function loadB3() {
 }
 
 function loadB4() {
-    var int = new Intersection(
+    var int = new TwoObjectIntersection(
         new Sphere (
             $V([1.25,1.25,3]),
             0.5,
@@ -168,22 +168,28 @@ function loadB4() {
     scene.addObject(int);
 
     var s1 = new Hemisphere (
-        $V([0,0,0]),           // center
-        2,                     // radius
-        new Material (
-            new Color(0.75,0,0),   // exterior ambient material color
-            new Color(1,0,0),      // exterior diffuse material color
-            new Color(1,1,1),      // exterior specular material color
-            32.0,                  // exterior specular exponent
-            Infinity),
-        new Material (
-            new Color(0.75,0.75,0),// interior ambient material color
-            new Color(1,1,0),      // interior diffuse material color
-            new Color(1,1,1),      // interior specular material color
-            32.0,                  // interior specular exponent
-            Infinity));             // refraction index
+        new Sphere (
+            $V([0,0,0]),
+            2,
+            new Material (
+                new Color(0.75,0,0),   // exterior ambient material color
+                new Color(1,0,0),      // exterior diffuse material color
+                new Color(1,1,1),      // exterior specular material color
+                32.0,                  // exterior specular exponent
+                Infinity) // refraction index
+        ),
+        new Plane (
+            $V([0,0,0]),
+            $V([-1,0,1]).toUnitVector(),
+            new Material (
+                new Color(0.75,0.75,0),// interior ambient material color
+                new Color(1,1,0),      // interior diffuse material color
+                new Color(1,1,1),      // interior specular material color
+                32.0,                  // interior specular exponent
+                Infinity) // refraction index
+        ));
 
-    //scene.addObject(s1);
+    scene.addObject(s1);
 
 }
 
@@ -223,7 +229,7 @@ function loadAdditionalStuff() {
             Infinity));               // refraction index
 
     //scene.lights = [];
-    scene.addLight(light2);
+    //scene.addLight(light2);
     //scene.addObject(s3);
     //scene.addObject(s4);
     //scene.addObject(p1);
