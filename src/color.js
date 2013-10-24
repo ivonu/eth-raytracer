@@ -33,37 +33,3 @@ Color.prototype.multiply = function (skalar) {
 Color.prototype.multiplyColor = function (color) {
     return new Color (this.r * color.r, this.g * color.g, this.b * color.b);
 }
-
-/*
- Color.prototype.subtractN = function (color) {
- this.r -= color.r;
- this.g -= color.g;
- this.b -= color.b;
-
- this.normalize();
- }
-
- Color.prototype.addN = function (color) {
- this.r += color.r;
- this.g += color.g;
- this.b += color.b;
-
- this.normalize();
- }
-
- Color.prototype.multiplyN = function (skalar) {
- this.r *= skalar;
- this.g *= skalar;
- this.b *= skalar;
-
- this.normalize();
- }
-
-Color.prototype.multiplyColorN = function (color) {
-    this.r *= color.r;
-    this.g *= color.g;
-    this.b *= color.b;
-
-    this.normalize();
-}
-*/

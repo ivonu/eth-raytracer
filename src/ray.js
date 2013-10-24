@@ -22,6 +22,8 @@ function getRay (pixelX, pixelY) {
     return new Ray ($L(camera.pos, direction.toUnitVector()),1,1);
 }
 
+
+// generate rays for anti aliasing
 function getRays (pixelX, pixelY) {
     var camera = scene.camera;
 

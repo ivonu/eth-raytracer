@@ -130,7 +130,7 @@ function reflect_refract (ray, intersection, depth) {
     }
     if (RayConfig.refraction && rays[1] !== null) {
         var specular_refraction_color = traceRay(rays[1], depth);
-        if (!inside) specular_refraction_color = specular_refraction_color.multiplyColor(intersection.material.specular);
+        if (!inside ) specular_refraction_color = specular_refraction_color.multiplyColor(intersection.material.specular);
         color = color.add(specular_refraction_color.multiply(rays[1].power));
     }
 
@@ -144,8 +144,6 @@ function traceRay (ray, depth) {
 
     // 2. intersect the ray to scene elements and determine the closest one
     var intersection = intersect(ray);
-
-    // 3. check if the intersection point is illuminated by each light source
 
     // 4. shade the intersection point using the material attributes and the lighting
     if (intersection !== null) {

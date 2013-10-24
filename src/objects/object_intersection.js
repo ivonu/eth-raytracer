@@ -1,11 +1,11 @@
-var TwoObjectIntersection = function (_object1, _object2, _material) {
+var ObjectIntersection = function (_object1, _object2, _material) {
     this.material = _material
 
     this.object1 = _object1;
     this.object2 = _object2;
 };
 
-TwoObjectIntersection.prototype.intersects = function (ray) {
+ObjectIntersection.prototype.intersects = function (ray) {
 
     var inside = (ray.refraction_idx !== 1);
 
