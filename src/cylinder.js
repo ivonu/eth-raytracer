@@ -19,9 +19,9 @@ var Cylinder = function (_axis_line, _fixed_x, _fixed_y, _fixed_z, _radius_x, _r
 Cylinder.prototype.getNormal = function (intersectionPoint) {
 
     var int = $V([
-        (this.fixed_x ? 0 : intersectionPoint.e(1)),
-        (this.fixed_y ? 0 : intersectionPoint.e(2)),
-        (this.fixed_z ? 0 : intersectionPoint.e(3))
+        (this.fixed_x ? 0 : intersectionPoint.e(1) / this.radius_x * this.radius_x),
+        (this.fixed_y ? 0 : intersectionPoint.e(2) / this.radius_y * this.radius_y),
+        (this.fixed_z ? 0 : intersectionPoint.e(3) / this.radius_z * this.radius_z)
     ]);
 
 
