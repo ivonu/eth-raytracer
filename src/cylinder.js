@@ -24,7 +24,14 @@ Cylinder.prototype.getNormal = function (intersectionPoint) {
         (this.fixed_z ? 0 : intersectionPoint.e(3))
     ]);
 
-    var normal = int.subtract(this.axis_line);
+
+    var cent = $V([
+        (this.fixed_x ? 0 : this.axis_line.e(1)),
+        (this.fixed_y ? 0 : this.axis_line.e(2)),
+        (this.fixed_z ? 0 : this.axis_line.e(3))
+    ]);
+
+    var normal = int.subtract(cent);
 
     return normal.toUnitVector();
 }
@@ -59,8 +66,19 @@ Cylinder.prototype.intersects = function (ray) {
     var t1 = (-b+root) / (2*a);
     var t2 = (-b-root) / (2*a);
 
-    if (t1 < RayConfig.intersection_delta) return t2;
-    if (t2 < RayConfig.intersection_delta) return t1;
+    // no intersection (or just self-intersection)
+    if (t1 < RayConfig.intersection_delta && t2 < RayConfig.intersection_delta) return null;
 
-    return Math.min(t1, t2);
+    var t_min = 0;
+    var t_max = 0;
+
+    // just one intersection (or self-intersection)
+    if (t1 < RayConfig.intersection_delta && t2 >= RayConfig.intersection_delta) { t_min = t2; t_max = t2; }
+    if (t2 < RayConfig.intersection_delta && t1 >= RayConfig.intersection_delta) { t_min = t1; t_max = t1; }
+
+    // two intersections
+    if (t1 >= RayConfig.intersection_delta && t2 >= RayConfig.intersection_delta) { t_min = Math.min(t1, t2); t_max = Math.max(t1, t2); }
+
+
+    return [t_min, this.getNormal(ray.line.anchor.add(ray.line.direction.multiply(t_min))), t_max];
 }

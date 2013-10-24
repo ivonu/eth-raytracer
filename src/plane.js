@@ -19,5 +19,5 @@ Plane.prototype.intersects = function (ray) {
 
     if (d < 0) return null;
 
-    return d;
+    return [d, this.normal, d];
 }

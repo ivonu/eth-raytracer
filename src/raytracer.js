@@ -4,17 +4,19 @@ function intersect (ray) {
     var min = Infinity;
     var object = null;
     var intersection_point = null;
+    var normal = null;
 
     // loop through all objects in the scene
     for (var i = 0; i < scene.objects.length; i++) {
 
         // intersect with object -> returns distance
-        var distance = scene.objects[i].intersects(ray);
-        if (distance !== null) {
+        var intersection = scene.objects[i].intersects(ray);
+        if (intersection !== null) {
 
             // check if object is nearer than the last one
-            if (distance > RayConfig.intersection_delta && distance < min) {
-                min = distance;
+            if (intersection[0] > RayConfig.intersection_delta && intersection[0] < min) {
+                min = intersection[0];
+                normal = intersection[1];
                 object = scene.objects[i];
             }
         }
@@ -23,7 +25,7 @@ function intersect (ray) {
     // calculate intersection-point with distance and ray
     if (min !== Infinity) intersection_point = ray.line.anchor.add(ray.line.direction.multiply(min));
 
-    return [object, intersection_point];
+    return [object, intersection_point, normal];
 }
 
 function illuminate (intersection, ray, light) {
@@ -32,6 +34,7 @@ function illuminate (intersection, ray, light) {
 
     var intersectionObject = intersection[0];
     var intersectionPoint = intersection[1];
+    var intersectionNormal = intersection[2];
 
     // vector from intersection-point to light-source
     var wl = light.pos.subtract(intersectionPoint).toUnitVector();
@@ -45,7 +48,7 @@ function illuminate (intersection, ray, light) {
     }
 
     // normal of intersection-point
-    var n = intersectionObject.getNormal(intersectionPoint);
+    var n = intersectionNormal;
 
     // view-direction
     var w = intersectionPoint.subtract (ray.line.anchor).toUnitVector();
@@ -73,11 +76,12 @@ function illuminate (intersection, ray, light) {
 function getSpecularRays (ray, intersection) {
     var intersectionObject = intersection[0];
     var intersectionPoint = intersection[1];
+    var intersectionNormal = intersection[2];
 
     var inside = ray.refraction_idx !== 1;
 
     // normal of intersection-point
-    var n = intersectionObject.getNormal(intersectionPoint);
+    var n = intersectionNormal;
     if (inside) n = n.multiply(-1);
 
     // view-direction
@@ -90,6 +94,8 @@ function getSpecularRays (ray, intersection) {
     // ray-reflection-direction: wr = 2n(w*n) - w
     var wr = n.multiply (2 * w_dot_n).subtract (w).toUnitVector();
     var reflectedRay = new Ray($L(intersectionPoint, wr), ray.refraction_idx, ray.power);
+
+    //console.log("reflect_angle: " + Math.acos(wr.dot(n))/Math.PI*180);
 
     // ===== refraction =====
     var refractedRay = null;

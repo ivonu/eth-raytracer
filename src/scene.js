@@ -109,6 +109,38 @@ function loadB3() {
 }
 
 function loadB4() {
+    var int = new Intersection(
+        new Color(0,0,0.75),   // ambient material color
+        new Color(0,0,1),      // diffuse material color
+        new Color(0.5,0.5,1),      // specular material color
+        16.0,                  // specular exponent
+        1.5             // refraction index
+    );
+    int.addObject(new Sphere (
+        $V([1.25,1.25,3]),
+        0.5,
+        null, null, null, null, null
+    ));
+    int.addObject(new Sphere (
+        $V([0.25,1.25,3]),
+        1,
+        null, null, null, null, null
+    ));
+
+    scene.addObject(int);
+
+
+
+    var s1 = new Sphere (
+        $V([-1,0,-2]),           // center
+        2,                     // radius
+        new Color(0.75,0,0),   // ambient material color
+        new Color(1,0,0),      // diffuse material color
+        new Color(1,1,1),      // specular material color
+        32.0,                  // specular exponent
+        Infinity);             // refraction index
+
+    scene.addObject(s1);
 
 }
 
