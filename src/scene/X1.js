@@ -37,9 +37,63 @@ function loadAdditionalStuff() {
             10,                             // specular exponent
             Infinity));                     // refraction index
 
+    var i = new ObjectIntersection(
+        new ObjectIntersection(
+            new Sphere ($V([0,0.5,0]), 2, null),
+            new Sphere ($V([0,0.5,0]), 2, null),
+            null
+        ),
+        new ObjectIntersection(
+            new Sphere ($V([0.,-0.5,0]), 2, null),
+            new Sphere ($V([-0.,-0.5,0]), 2, null),
+            null
+        ),
+        new Material(
+            new Color(0.75, 0.75, 0.75),    // ambient material color
+            new Color(1, 1, 1),             // diffuse material color
+            new Color(1, 1, 1),             // specular material color
+            10,                             // specular exponent
+            Infinity)                      // refraction index
+    )
+
+    var i1 = new ObjectIntersection(
+        new Sphere ($V([0.5,0,0]), 2, null),
+        new Sphere ($V([-0.5,0,0]), 2, null),
+        new Material(
+            new Color(0.75, 0.75, 0.75),    // ambient material color
+            new Color(1, 1, 1),             // diffuse material color
+            new Color(1, 1, 1),             // specular material color
+            10,                             // specular exponent
+            Infinity)                      // refraction index
+    )
+    var i2 = new ObjectIntersection(
+        new Sphere ($V([0,0.5,0]), 2, null),
+        new Sphere ($V([0,-0.5,0]), 2, null),
+        new Material(
+            new Color(0.75, 0.75, 0.75),    // ambient material color
+            new Color(1, 1, 1),             // diffuse material color
+            new Color(1, 1, 1),             // specular material color
+            10,                             // specular exponent
+            Infinity)                      // refraction index
+    )
+
     //scene.lights = [];
     //scene.addLight(light2);
     //scene.addObject(s3);
     //scene.addObject(s4);
     //scene.addObject(p1);
+    //scene.addObject(i);
+    //scene.addObject(i1);
+    //scene.addObject(i2);
+
+    var i3 = new ObjectIntersection(
+        i1, i2,
+        new Material(
+            new Color(0.75, 0.75, 0.75),    // ambient material color
+            new Color(1, 1, 1),             // diffuse material color
+            new Color(1, 1, 1),             // specular material color
+            10,                             // specular exponent
+            Infinity)                      // refraction index
+    )
+    scene.addObject(i3);
 }
