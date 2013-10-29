@@ -26,6 +26,32 @@ var Intersection = function (_ray, _t1, _t2, _normalObject, _object, _material) 
     this.point = null;
 }
 
+
+Intersection.prototype.getAmbient = function () {
+    if (this.object.texture) {
+        var uv = this.object.calcUV(this.getPoint());
+        return this.object.texture.getPixelColor(uv[0], uv[1]);
+    }
+    return this.object.material.ambient;
+}
+
+Intersection.prototype.getDiffuse = function () {
+    if (this.object.texture) {
+        var uv = this.object.calcUV(this.getPoint());
+        return this.object.texture.getPixelColor(uv[0], uv[1]);
+    }
+    return this.object.material.diffuse;
+}
+
+Intersection.prototype.getSpecular = function () {
+    if (this.object.texture) {
+        var uv = this.object.calcUV(this.getPoint());
+        return this.object.texture.getPixelColor(uv[0], uv[1]);
+    }
+    return this.object.material.specular;
+}
+
+
 Intersection.prototype.getPoint = function () {
     if (this.point === null)
         this.point = this.ray.line.anchor.add (this.ray.line.direction.multiply(this.distance));

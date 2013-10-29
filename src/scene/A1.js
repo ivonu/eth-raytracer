@@ -1,24 +1,20 @@
 function loadA1() {
 
+    var material1 = ModuleId.C1 ? Material.redC1() : Material.red();
+    var texture1 = ModuleId.C2 ? Texture.earth() : null;
+
+    var material2 = ModuleId.C1 ? Material.blueC1() : Material.blue();
+    var texture2 = ModuleId.C2 ? Texture.moon() : null;
+
     var s1 = new Sphere (
         $V([0,0,0]),           // center
         2,                     // radius
-        new Material (
-            new Color(0.75,0,0),   // ambient material color
-            new Color(1,0,0),      // diffuse material color
-            new Color(1,1,1),      // specular material color
-            32.0,                  // specular exponent
-            Infinity));            // refraction index
+        material1, texture1);
 
     var s2 = new Sphere (
         $V([1.25,1.25,3]),     // center
         0.5,                   // radius
-        new Material (
-            new Color(0,0,0.75),   // ambient material color
-            new Color(0,0,1),      // diffuse material color
-            new Color(0.5,0.5,1),  // specular material color
-            16.0,                  // specular exponent
-            1.5));                 // refraction index
+        material2, texture2);
 
     scene.addObject(s1);
     scene.addObject(s2);

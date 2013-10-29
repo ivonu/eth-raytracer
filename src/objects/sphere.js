@@ -1,9 +1,22 @@
-var Sphere = function (_center, _radius, _material) {
+var Sphere = function (_center, _radius, _material, _texture) {
     this.center = _center;
     this.radius = _radius;
 
-    this.material = _material
+    this.material = _material;
+    this.texture = _texture;
 };
+
+Sphere.prototype.calcUV = function (intersectionPoint) {
+    var center_to_point = intersectionPoint.subtract(this.center).toUnitVector();
+
+    var x = center_to_point.e(1);
+    var y = center_to_point.e(2);
+    var z = center_to_point.e(3);
+
+    var u = 0.5 + Math.atan2(z, x) / (2 * Math.PI);
+    var v = 0.5 + Math.asin(y) / Math.PI;
+    return [u,v];
+}
 
 Sphere.prototype.getNormal = function (intersectionPoint) {
     return intersectionPoint.subtract(this.center).toUnitVector();

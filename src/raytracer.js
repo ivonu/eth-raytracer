@@ -31,7 +31,7 @@ function illuminate (intersection, ray, light) {
 
     // 3. check if the intersection point is illuminated by each light source
     // check if point to light-source is intersected -> shadows
-    var light_intersection = intersect (new Ray($L(intersection.getPoint(), wl), ray.refraction_idx, ray.power));
+    var light_intersection = intersect (new Ray($L(intersection.getPoint(), wl), ray.refraction_idx, ray.power, null));
     if (RayConfig.shadows && light_intersection !== null) {
         // if (light_intersection[0].refraction_idx !== Infinity) light refraction through object
         return color;
@@ -49,9 +49,9 @@ function illuminate (intersection, ray, light) {
     var E = light.diffuseIntensity * n.dot(wl);
     var S = Math.pow(wr.dot(wl), intersection.material.specular_exp) / n.dot(wl);
 
-    var ambient_color = intersection.material.ambient.multiply(light.ambientIntensity);
-    var diffuse_color = intersection.material.diffuse.multiply(E);
-    var specular_highlight_color = S > 0 && S !== Infinity ? intersection.material.specular.multiply(S*E) : color;
+    var ambient_color = intersection.getAmbient().multiply(light.ambientIntensity);
+    var diffuse_color = intersection.getDiffuse().multiply(E);
+    var specular_highlight_color = S > 0 && S !== Infinity ? intersection.getSpecular().multiply(S*E) : color;
 
     if (RayConfig.ambient_illumination) color = color.add(ambient_color);
     if (RayConfig.diffuse_illumination) color = color.add(diffuse_color);
@@ -79,7 +79,7 @@ function getSpecularRays (ray, intersection) {
     // ===== reflection =====
     // ray-reflection-direction: wr = 2n(w*n) - w
     var wr = n.multiply (2 * w_dot_n).subtract (w).toUnitVector();
-    var reflectedRay = new Ray($L(intersection.getPoint(), wr), ray.refraction_idx, ray.power);
+    var reflectedRay = new Ray($L(intersection.getPoint(), wr), ray.refraction_idx, ray.power, null);
 
     // ===== refraction =====
     var refractedRay = null;
@@ -94,7 +94,7 @@ function getSpecularRays (ray, intersection) {
         if (under_root >= 0) {
             // ray-refraction-direction
             var wt = first.subtract( n.multiply(Math.sqrt(under_root))).toUnitVector();
-            var refractedRay = new Ray ($L(intersection.getPoint(), wt), n2, ray.power);
+            var refractedRay = new Ray ($L(intersection.getPoint(), wt), n2, ray.power, null);
 
             // ===== fresnel equation ====
             var cos1 = wr.dot(n);
@@ -125,12 +125,12 @@ function reflect_refract (ray, intersection, depth) {
 
     if (RayConfig.reflection && rays[0] !== null) {
         var specular_reflected_color = traceRay(rays[0], depth);
-        specular_reflected_color = specular_reflected_color.multiplyColor(intersection.material.specular);
+        specular_reflected_color = specular_reflected_color.multiplyColor(intersection.getSpecular());
         color = color.add(specular_reflected_color.multiply(rays[0].power));
     }
     if (RayConfig.refraction && rays[1] !== null) {
         var specular_refraction_color = traceRay(rays[1], depth);
-        if (!inside ) specular_refraction_color = specular_refraction_color.multiplyColor(intersection.material.specular);
+        if (!inside ) specular_refraction_color = specular_refraction_color.multiplyColor(intersection.getSpecular());
         color = color.add(specular_refraction_color.multiply(rays[1].power));
     }
 
@@ -148,7 +148,7 @@ function traceRay (ray, depth) {
     // 4. shade the intersection point using the material attributes and the lighting
     if (intersection !== null) {
 
-        var global_ambient_color = intersection.material.ambient.multiply(scene.globalAmbientIntensity);
+        var global_ambient_color = intersection.getAmbient().multiply(scene.globalAmbientIntensity);
         if (RayConfig.global_ambient_illumination) color = color.add(global_ambient_color);
 
         for (var i = 0; i < scene.lights.length; i++) {
