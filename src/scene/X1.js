@@ -18,7 +18,7 @@ function loadAdditionalStuff() {
             1.5));                                  // refraction index
 
     var s4 = new Sphere (
-        $V([-1.5,-1,-3]),       // center
+        $V([-2.5,-1.5,0]),       // center
         1,                      // radius
         new Material(
             new Color(0.24725, 0.1995, 0.0745),         // ambient material color
@@ -79,9 +79,9 @@ function loadAdditionalStuff() {
 
     //scene.lights = [];
     //scene.addLight(light2);
-    //scene.addObject(s3);
-    //scene.addObject(s4);
-    //scene.addObject(p1);
+    scene.addObject(s3);
+    scene.addObject(s4);
+    scene.addObject(p1);
     //scene.addObject(i);
     //scene.addObject(i1);
     //scene.addObject(i2);
@@ -95,5 +95,5 @@ function loadAdditionalStuff() {
             10,                             // specular exponent
             Infinity)                      // refraction index
     )
-    scene.addObject(i3);
+    //scene.addObject(i3);
 }

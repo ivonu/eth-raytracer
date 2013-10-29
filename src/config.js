@@ -13,9 +13,11 @@ RayConfig = {
     reflection: true,
     refraction: true,
 
-    samples_per_pixel: 16,
-    samples_per_axis: 4,
+    samples_per_pixel: ModuleId.B2 ? 16 : 1,
+    samples_per_axis: ModuleId.B2 ? 4 : 1,
+    anti_aliasing_method: Ray.AntiAliasing.JITTER,
 
     intersection_delta: 0.00001
 };
+
 

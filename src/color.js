@@ -6,6 +6,10 @@ var Color = function (_r, _g, _b) {
     this.normalize();
 };
 
+Color.fromVector = function (_vector) {
+    return new Color (_vector.e(1), _vector.e(2), _vector.e(3));
+}
+
 Color.random = function() {
     return new Color(Math.random(), Math.random(), Math.random());
 }
@@ -32,4 +36,8 @@ Color.prototype.multiply = function (skalar) {
 
 Color.prototype.multiplyColor = function (color) {
     return new Color (this.r * color.r, this.g * color.g, this.b * color.b);
+}
+
+Color.prototype.toVector = function () {
+    return $V([this.r, this.g, this.b]);
 }

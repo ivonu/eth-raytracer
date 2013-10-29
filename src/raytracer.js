@@ -104,7 +104,7 @@ function getSpecularRays (ray, intersection) {
             var p_refract = (n1*cos1 - n2*cos2) / (n1*cos1 + n2*cos2);
 
             var F_reflect = 0.5*(p_reflect*p_reflect + p_refract*p_refract);
-            //F_reflect = 0;
+            //F_reflect = 0.2;
             var F_refract = 1-F_reflect;
 
             reflectedRay.power = reflectedRay.power * F_reflect;
@@ -167,18 +167,44 @@ function trace(pixelX, pixelY) {
     var color = new Color(0,0,0);
 
     // 1. shoot a ray determined from the camera parameters and the pixel position in the image
-    if (ModuleId.B2) {
-        // super sampling / anti-aliasing
-        var rays = getRays(pixelX, pixelY);
-        for (var i = 0; i < RayConfig.samples_per_pixel; i++) {
-            var sample_color = traceRay(rays[i], RayConfig.depth);
-            sample_color = sample_color.multiply(1.0/RayConfig.samples_per_pixel);
+
+    var left = new Color(0,0,0);
+    var right = new Color(0,0,0);
+
+    var rays = getRays(pixelX, pixelY);
+
+    for (var i = 0; i < rays.length; i++) {
+        var sample_color = traceRay(rays[i], RayConfig.depth);
+        sample_color = sample_color.multiply(1.0/RayConfig.samples_per_pixel);
+
+        if (rays[i].eye === Ray.Eye.LEFT) {
+            left = left.add(sample_color);
+        } else if (rays[i].eye === Ray.Eye.RIGHT) {
+            right = right.add(sample_color);
+        } else {
             color = color.add(sample_color);
         }
+    }
 
-    } else {
-        var ray = getRay(pixelX, pixelY);
-        color = traceRay(ray, RayConfig.depth);
+
+    if (ModuleId.C1) {
+        var leftM = $M([
+            [0.3, 0.59, 0.11],
+            [0, 0, 0],
+            [0, 0, 0]
+        ]);
+        var rightM = $M([
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 1]
+        ]);
+
+        var leftV = leftM.multiply(left.toVector());
+        var rightV = rightM.multiply(right.toVector());
+
+        //color = Color.fromVector (leftV);
+        //color = Color.fromVector (rightV);
+        color = Color.fromVector (leftV.add(rightV));
     }
 
     console.rlog_end();

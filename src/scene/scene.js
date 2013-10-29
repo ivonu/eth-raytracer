@@ -46,7 +46,7 @@ function loadDefaultCamera() {
         $V([0,0,-1]),      // view direction
         $V([0,1,0]),       // up direction
         40,                // field of view
-        1,                 // distance
+        8.5,                 // distance
         RayConfig.width,   // image width
         RayConfig.height); // image height
 
