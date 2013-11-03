@@ -28,7 +28,7 @@ var Intersection = function (_ray, _t1, _t2, _normalObject, _object, _material) 
 
 
 Intersection.prototype.getAmbient = function () {
-    if (this.object.texture) {
+    if (RayConfig.texture && this.object.texture) {
         var uv = this.object.calcUV(this.getPoint());
         return this.object.texture.getPixelColor(uv[0], uv[1]);
     }
@@ -36,7 +36,7 @@ Intersection.prototype.getAmbient = function () {
 }
 
 Intersection.prototype.getDiffuse = function () {
-    if (this.object.texture) {
+    if (RayConfig.texture && this.object.texture) {
         var uv = this.object.calcUV(this.getPoint());
         return this.object.texture.getPixelColor(uv[0], uv[1]);
     }
@@ -44,7 +44,7 @@ Intersection.prototype.getDiffuse = function () {
 }
 
 Intersection.prototype.getSpecular = function () {
-    if (this.object.texture) {
+    if (RayConfig.texture && this.object.texture) {
         var uv = this.object.calcUV(this.getPoint());
         return this.object.texture.getPixelColor(uv[0], uv[1]);
     }
@@ -61,9 +61,28 @@ Intersection.prototype.getPoint = function () {
 
 Intersection.prototype.getNormal = function () {
     if (this.normal === null) {
-        if (this.object.normalmap) {
+        if (RayConfig.normalmap && this.object.normalmap) {
+
+            var old_normal = this.normalObject.getNormal(this.getPoint());
+            //old_normal = $V([-1,0,0]);
+
+            var tangent1 = old_normal.cross($V([0,1,0])).toUnitVector();
+            var tangent2 = old_normal.cross(tangent1).toUnitVector();
+
+            var transMatrix = $M([
+                tangent1.multiply(-1).elements,
+                tangent2.multiply(-1).elements,
+                old_normal.elements
+            ]);
+
+            transMatrix = transMatrix.transpose();
+
             var uv = this.object.calcUV(this.getPoint());
-            this.normal = this.object.normalmap.getNormal(uv[0], uv[1]);
+            var new_normal = this.object.normalmap.getNormal(uv[0], uv[1]);
+            //new_normal = $V([1,0,1]).toUnitVector();
+
+            this.normal = transMatrix.multiply(new_normal);
+
         } else {
             this.normal = this.normalObject.getNormal(this.getPoint());
         }

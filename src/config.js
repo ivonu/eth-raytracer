@@ -17,6 +17,9 @@ RayConfig = {
     samples_per_axis: ModuleId.B2 ? 4 : 1,
     anti_aliasing_method: Ray.AntiAliasing.GRID,
 
+    normalmap: true,
+    texture: true,
+
     intersection_delta: 0.00001
 };
 

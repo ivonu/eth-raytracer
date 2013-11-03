@@ -13,7 +13,7 @@ NormalMap.prototype.getNormal = function (u, v) {
     var g = this.tga.image[id + 1] / 255.0;
     var b = this.tga.image[id + 0] / 255.0;
 
-    return $V([2*r-1, 2*g-1, 2*b-1]);
+    return $V([2*r-1, 2*g-1, 2*b-1]).toUnitVector();
 }
 
 NormalMap.earth = function() {
