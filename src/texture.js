@@ -7,10 +7,10 @@ var Texture = function (_texture, _specular_exp, _refraction_idx) {
 }
 
 Texture.prototype.getPixelColor = function (u, v) {
-    u = Math.floor(u * this.tga.header.height);
-    v = Math.floor(v * this.tga.header.width);
+    u = Math.floor(u * this.tga.header.width);
+    v = Math.floor(v * this.tga.header.height);
 
-    var id = 3 * (u * this.tga.header.width + v);
+    var id = 3 * (v * this.tga.header.width + u);
 
     var r = this.tga.image[id + 2] / 255.0;
     var g = this.tga.image[id + 1] / 255.0;

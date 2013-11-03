@@ -3,7 +3,7 @@ RayConfig = {
     height: 600,
 
 
-    shadows: true,
+    shadows: false,
     specular_highlights: true,
     diffuse_illumination: true,
     ambient_illumination: true,

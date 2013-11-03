@@ -1,21 +1,64 @@
-var Sphere = function (_center, _radius, _material, _texture) {
+var Sphere = function (_center, _radius, _material, _texture, _normalmap) {
     this.center = _center;
     this.radius = _radius;
 
     this.material = _material;
     this.texture = _texture;
+    this.normalmap = _normalmap;
+
+    this.northDirection = $V([0,1,1]).toUnitVector();
+    this.meridianDirection = $V([-1,1,-1]).toUnitVector();
 };
+
+Sphere.prototype.getInclination = function (unitVector) {
+    var x = unitVector.e(1);
+    var y = unitVector.e(2);
+    var z = unitVector.e(3);
+
+    return Math.acos (y);
+}
+
+Sphere.prototype.getAzimuth = function (unitVector) {
+    var x = unitVector.e(1);
+    var y = unitVector.e(2);
+    var z = unitVector.e(3);
+
+    var azimuth =  Math.atan (x / z);
+
+    if (z < 0) azimuth += Math.PI;
+    else if (x < 0) azimuth += Math.PI*2;
+
+    return azimuth;
+}
 
 Sphere.prototype.calcUV = function (intersectionPoint) {
     var center_to_point = intersectionPoint.subtract(this.center).toUnitVector();
 
-    var x = center_to_point.e(1);
-    var y = center_to_point.e(2);
-    var z = center_to_point.e(3);
+    var origin = $V([0,0,0]);
+    var rightDirection = $V([1,0,0]);
+    var upDirection = $V([0,1,0]);
+    var frontDirection = $V([0,0,1]);
 
-    var u = 0.5 + Math.atan2(z, x) / (2 * Math.PI);
-    var v = 0.5 + Math.asin(y) / Math.PI;
-    return [u,v];
+
+    var meridianAngle = -Math.acos(this.meridianDirection.dot(frontDirection));
+    center_to_point = center_to_point.rotate(meridianAngle, $L($V([0,0,0]), upDirection));
+    upDirection     = upDirection.rotate(meridianAngle, $L(origin, upDirection));
+    rightDirection  = rightDirection.rotate(meridianAngle, $L(origin, upDirection));
+    frontDirection  = frontDirection.rotate(meridianAngle, $L(origin, upDirection));
+
+    var northAngle = -Math.acos(this.northDirection.dot(upDirection));
+    center_to_point = center_to_point.rotate(northAngle, $L(origin, rightDirection));
+    upDirection     = upDirection.rotate(northAngle, $L(origin, rightDirection));
+    rightDirection  = rightDirection.rotate(northAngle, $L(origin, rightDirection));
+    frontDirection  = frontDirection.rotate(northAngle, $L(origin, rightDirection));
+
+    var inclination = this.getInclination(center_to_point);
+    var azimuth = this.getAzimuth(center_to_point);
+
+    var u = azimuth / (2*Math.PI);
+    var v = -(inclination/Math.PI) + 1;
+
+    return [u, v];
 }
 
 Sphere.prototype.getNormal = function (intersectionPoint) {

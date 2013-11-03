@@ -60,8 +60,14 @@ Intersection.prototype.getPoint = function () {
 }
 
 Intersection.prototype.getNormal = function () {
-    if (this.normal === null)
-        this.normal = this.normalObject.getNormal(this.getPoint());
+    if (this.normal === null) {
+        if (this.object.normalmap) {
+            var uv = this.object.calcUV(this.getPoint());
+            this.normal = this.object.normalmap.getNormal(uv[0], uv[1]);
+        } else {
+            this.normal = this.normalObject.getNormal(this.getPoint());
+        }
+    }
 
     return this.normal;
 }
