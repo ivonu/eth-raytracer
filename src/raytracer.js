@@ -5,10 +5,10 @@ function intersect (ray) {
     var nextIntersection = null;
 
     // loop through all objects in the scene
-    for (var i = 0; i < scene.objects.length; i++) {
-
+    var objects = RayConfig.octree ? scene.octree.getIntersectionObjects(ray) : scene.objects;
+    for (var i = 0; i < objects.length; i++) {
         // intersect with object -> returns distance
-        var intersection = scene.objects[i].intersects(ray);
+        var intersection = objects[i].intersects(ray);
         if (intersection !== null) {
 
             // check if object is nearer than the last one

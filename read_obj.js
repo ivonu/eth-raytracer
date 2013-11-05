@@ -9,38 +9,15 @@ function readOBJ(path) {
 	req.open('GET', path, false);
 	
 	req.send(null);
-	obj.load(req.response);
+    loadMesh (obj, req.response);
+    obj.generateTriangles();
 	obj.computeNormals();
-	console.log("OBJ file successfully loaded (nbV: " + obj.nbV() + ", nbF: " + obj.nbF() + ")");
+	console.log("OBJ file successfully loaded (nbV: " + obj.V.length + ", nbF: " + obj.F.length + ")");
 	
 	return obj;
 }
-
-
-var Mesh = function() {
-	this.V = new Array(); // array of vertices
-	this.F = new Array(); // array of triangles
-	this.N = new Array(); // array of normals
-};
-
-Mesh.prototype.computeNormals = function() {
 	
-	for(var i = 0 ; i < this.nbV() ; ++i) {
-		this.N[i] = $V([0,0,0]);
-	}
-	// TODO for exercise 3
-	
-}
-
-Mesh.prototype.nbV = function() { // number of vertices
-	return this.V.length;
-};
-
-Mesh.prototype.nbF = function() { // number of triangles
-	return this.F.length;
-};
-	
-Mesh.prototype.load = function (data) {
+function loadMesh (mesh, data) {
 
 	// v float float float
 	var vertex_pattern = /v( +[\d|\.|\+|\-|e]+)( +[\d|\.|\+|\-|e]+)( +[\d|\.|\+|\-|e]+)/;
@@ -69,7 +46,7 @@ Mesh.prototype.load = function (data) {
 		else if ( ( result = vertex_pattern.exec( line ) ) !== null ) {
 
 			// ["v 1.0 2.0 3.0", "1.0", "2.0", "3.0"]
-			this.V.push( $V([
+			mesh.V.push( $V([
 				parseFloat( result[ 1 ] ),
 				parseFloat( result[ 2 ] ),
 				parseFloat( result[ 3 ] )
@@ -79,7 +56,7 @@ Mesh.prototype.load = function (data) {
 		else if ( ( result = face_pattern1.exec( line ) ) !== null ) {
 
 			// ["f 1 2 3", "1", "2", "3"]
-			this.F.push( $V([
+			mesh.F.push( $V([
 				parseInt( result[ 1 ] ) - 1 ,
 				parseInt( result[ 2 ] ) - 1 ,
 				parseInt( result[ 3 ] ) - 1 
@@ -88,7 +65,7 @@ Mesh.prototype.load = function (data) {
 		} else if ( ( result = face_pattern2.exec( line ) ) !== null ) {
 
 			// ["f 1/1 2/2 3/3", " 1/1", "1", "1", " 2/2", "2", "2", " 3/3", "3", "3"]
-			this.F.push( $V([
+			mesh.F.push( $V([
 				parseInt( result[ 2 ] ) - 1 ,
 				parseInt( result[ 5 ] ) - 1 ,
 				parseInt( result[ 8 ] ) - 1 
@@ -97,7 +74,7 @@ Mesh.prototype.load = function (data) {
 		} else if ( ( result = face_pattern3.exec( line ) ) !== null ) {
 
 			// ["f 1/1/1 2/2/2 3/3/3", " 1/1/1", "1", "1", "1", " 2/2/2", "2", "2", "2", " 3/3/3", "3", "3", "3"]
-			this.F.push( $V([
+			mesh.F.push( $V([
 				parseInt( result[ 2 ] ) - 1 ,
 				parseInt( result[ 6 ] ) - 1 ,
 				parseInt( result[ 10 ] ) - 1 
@@ -106,7 +83,7 @@ Mesh.prototype.load = function (data) {
 		} else if ( ( result = face_pattern4.exec( line ) ) !== null ) {
 
 			// ["f 1//1 2//2 3//3", " 1//1", "1", "1", " 2//2", "2", "2", " 3//3", "3", "3"]
-			this.F.push( $V([
+			mesh.F.push( $V([
 				parseInt( result[ 2 ] ) - 1,
 				parseInt( result[ 5 ] ) - 1,
 				parseInt( result[ 8 ] ) - 1 

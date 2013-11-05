@@ -10,6 +10,17 @@ var Sphere = function (_center, _radius, _material, _texture, _normalmap) {
     this.meridianDirection = $V([-1,1,-1]).toUnitVector();
 };
 
+Sphere.prototype.getBounding = function () {
+    return new Bounding(
+        this.center.e(1) + this.radius,
+        this.center.e(1) - this.radius,
+        this.center.e(2) + this.radius,
+        this.center.e(2) - this.radius,
+        this.center.e(3) + this.radius,
+        this.center.e(3) - this.radius
+    );
+}
+
 Sphere.prototype.getInclination = function (unitVector) {
     var x = unitVector.e(1);
     var y = unitVector.e(2);

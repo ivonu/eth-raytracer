@@ -20,6 +20,9 @@ RayConfig = {
     normalmap: true,
     texture: true,
 
+    octree: true,
+    octree_depth: 5,
+
     intersection_delta: 0.00001
 };
 
