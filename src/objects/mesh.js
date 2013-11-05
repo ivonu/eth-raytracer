@@ -1,4 +1,4 @@
-var Mesh = function() {
+var Mesh = function(_position, _scale) {
     this.V = new Array(); // array of vertices
     this.F = new Array(); // array of triangles
     this.N = new Array(); // array of normals
@@ -7,8 +7,8 @@ var Mesh = function() {
 
     this.material = null;
 
-    this.position = null;
-    this.scale = null;
+    this.position = _position;
+    this.scale = _scale;
 
     this.octree = new Octree (null, 0);
 };
@@ -21,9 +21,9 @@ Mesh.prototype.generateTriangles = function () {
     for (var i = 0; i < this.F.length; i++) {
         var face = this.F[i];
         var triangle = new Triangle (
-            this.V[face.e(1)],
-            this.V[face.e(2)],
-            this.V[face.e(3)],
+            this.V[face.e(1)].multiply(this.scale).add(this.position),
+            this.V[face.e(2)].multiply(this.scale).add(this.position),
+            this.V[face.e(3)].multiply(this.scale).add(this.position),
             null
         );
         this.triangles[i] = triangle;
@@ -37,6 +37,11 @@ Mesh.prototype.intersects = function (ray) {
     var min_intersection = null;
 
     var objects = RayConfig.octree ? this.octree.getIntersectionObjects(ray) : this.triangles;
+    //console.rlog("triangle intersection tests (before): " + objects.length);
+    objects = objects.filter (function (elem, pos) {
+        return objects.indexOf(elem) == pos;
+    });
+    //console.rlog("triangle intersection tests (after): " + objects.length);
     for (var i = 0; i < objects.length; i++) {
 
         var intersection = objects[i].intersects(ray);

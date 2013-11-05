@@ -6,6 +6,11 @@ function intersect (ray) {
 
     // loop through all objects in the scene
     var objects = RayConfig.octree ? scene.octree.getIntersectionObjects(ray) : scene.objects;
+    //console.rlog("object intersection tests (before): " + objects.length);
+    objects = objects.filter (function (elem, pos) {
+        return objects.indexOf(elem) == pos;
+    });
+    //console.rlog("object intersection tests (after): " + objects.length);
     for (var i = 0; i < objects.length; i++) {
         // intersect with object -> returns distance
         var intersection = objects[i].intersects(ray);

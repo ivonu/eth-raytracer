@@ -2,9 +2,9 @@
 // DO NOT change the content of this file except for implementing the computeNormals() function
 // to load a mesh you need to call: var myMesh = readOBJ('./data/mesh.obj');
 
-function readOBJ(path) {
+function readOBJ(path, position, scale) {
 	console.log("Reading OBJ file: " + path);
-	var obj = new Mesh();
+	var obj = new Mesh(position, scale);
 	var req = new XMLHttpRequest();
 	req.open('GET', path, false);
 	

@@ -5,7 +5,6 @@ var Scene = function (_globalAmbientIntensity) {
     this.camera = null;
 
     this.octree = new Octree(null, 0);
-    this.bounding = null;
 };
 
 Scene.prototype.addLight = function (_light) {
@@ -46,9 +45,7 @@ function loadScene() {
         loadA1();
     }
 
-    if (RayConfig.octree) {
-        scene.octree.loadOctree (scene.objects);
-    }
+    if (RayConfig.octree) scene.octree.loadOctree (scene.objects);
 
     console.log("scene loaded");
 }

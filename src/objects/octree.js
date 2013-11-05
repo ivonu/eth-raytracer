@@ -63,6 +63,7 @@ Octree.prototype.loadOctree = function (objects) {
     }
 }
 
+// http://www.brandonpelfrey.com/blog/coding-a-simple-octree/
 Octree.prototype.insertObject = function (object) {
 
     if (this.depth >= RayConfig.octree_depth) {
