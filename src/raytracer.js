@@ -36,9 +36,8 @@ function illuminate (intersection, ray, light) {
 
     // 3. check if the intersection point is illuminated by each light source
     // check if point to light-source is intersected -> shadows
-    var light_intersection = intersect (new Ray($L(intersection.getPoint(), wl), ray.refraction_idx, ray.power, null));
-    if (RayConfig.shadows && light_intersection !== null) {
-        // if (light_intersection[0].refraction_idx !== Infinity) light refraction through object
+    var shadowIntensity = RayConfig.shadows ? light.getShadowIntensity(intersection) : 0;
+    if (shadowIntensity === 1) {
         return color;
     }
 
@@ -62,7 +61,7 @@ function illuminate (intersection, ray, light) {
     if (RayConfig.diffuse_illumination) color = color.add(diffuse_color);
     if (RayConfig.specular_highlights) color = color.add(specular_highlight_color);
 
-    return color;
+    return color.multiply(1-shadowIntensity);
 }
 
 
@@ -143,7 +142,6 @@ function reflect_refract (ray, intersection, depth) {
 }
 
 
-
 function traceRay (ray, depth) {
     var color = new Color (0,0,0);
 
@@ -179,7 +177,7 @@ function trace(pixelX, pixelY) {
     var rays = getRays(pixelX, pixelY);
 
     for (var i = 0; i < rays.length; i++) {
-        var sample_color = traceRay(rays[i], RayConfig.depth);
+        var sample_color = traceRay(rays[i], RayConfig.reflection_depth);
         sample_color = sample_color.multiply(1.0/RayConfig.samples_per_pixel);
 
         if (rays[i].eye === Ray.Eye.LEFT) {
@@ -214,7 +212,7 @@ function trace(pixelX, pixelY) {
 
     console.rlog_end();
 
-	// 5. set the pixel color into the image buffer using the computed shading (for now set dummy color into the image buffer)
+	// 5. set the pixel color into the image buffer using the computed shading
 	return color;
 }
 

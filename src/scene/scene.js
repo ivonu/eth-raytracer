@@ -24,7 +24,12 @@ function loadScene() {
     scene = new Scene (0.2); // global ambient intensity
 
     loadDefaultCamera();
-    loadDefaultLight();
+
+    if (ModuleId.D2) {
+        loadAreaLight();
+    } else {
+        loadDefaultLight();
+    }
 
     if (ModuleId.B3) {
         loadB3();
@@ -70,8 +75,21 @@ function loadDefaultCamera() {
 }
 
 function loadDefaultLight() {
-    var light = new Light (
+    var light = new PointLight (
         $V([10,10,10]),      // position
+        new Color(1,1,1),    // color
+        0,                   // ambient intensity
+        1,                   // diffuse intensity
+        1);                  // specular intensity
+
+    scene.addLight(light);
+}
+
+function loadAreaLight() {
+    var light = new AreaLight (
+        $V([10,10,10]),      // position
+        1,
+        $V([0,0,0]).subtract($V([10,10,10])).toUnitVector(),
         new Color(1,1,1),    // color
         0,                   // ambient intensity
         1,                   // diffuse intensity

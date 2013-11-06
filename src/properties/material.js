@@ -47,6 +47,6 @@ Material.blueC1 = function() {
         new Color(0,1,1),      // ambient material color
         new Color(0,1,1),      // diffuse material color
         new Color(1,1,1),      // specular material color
-        32.0,                  // specular exponent
-        Infinity);             // refraction index
+        16.0,                  // specular exponent
+        1.5);                  // refraction index
 }

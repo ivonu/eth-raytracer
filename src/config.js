@@ -2,14 +2,15 @@ RayConfig = {
     width: 800,
     height: 600,
 
+    soft_shadow_samples: 50,
 
-    shadows: false,
+    shadows: true,
     specular_highlights: true,
     diffuse_illumination: true,
     ambient_illumination: true,
     global_ambient_illumination: true,
 
-    depth: 4,
+    reflection_depth: 4,
     reflection: true,
     refraction: true,
 

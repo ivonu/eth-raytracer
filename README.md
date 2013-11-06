@@ -14,7 +14,7 @@ Ray casting:
 Ray-object intersection:
 - raytracer.js
     - intersect()
-- sphere.js
+- objects/sphere.js
     - intersects()
 - intersection.js
 
@@ -31,8 +31,8 @@ The Scene:
 - scene/A1.js
 - camera.js
 - light.js
-- material.js
-- color.js
+- properties/material.js
+- properties/color.js
 
 ------------------------------------------------------------------------
 B1: Specular reflection and specular refraction
@@ -41,7 +41,7 @@ B1: Specular reflection and specular refraction
     - getSpecularRays()
 
 ------------------------------------------------------------------------
-B2: Anti-aliasing with a regular grid
+B2: Anti-aliasing with a regular grid / random / jitter
 - ray.js
     - getRays()
 - raytracer.js
@@ -60,7 +60,37 @@ B4: Boolean operations
 - objects/object_intersection.js
 
 ------------------------------------------------------------------------
+C1: Stereoscopic rendering
+- ray.js
+- raytracer.js
+    - trace()
 
+------------------------------------------------------------------------
+C2: Texture mapping and bump mapping
+- properties/texture.js
+- properties/normalmap.js
+- objects/sphere.js
+    - calcUV()
+- intersection.js
+    - getAmbient() / getDiffuse() / getSpecular()
+    - getNormal()
+
+------------------------------------------------------------------------
+C3: Triangle meshes
+- objects/mesh.js
+- objects/triangle.js
+- scene/C3.js
+
+------------------------------------------------------------------------
+D1: Octree (termination criteria: number of levels: log8 #objects)
+- scene/D1.js
+- objects/octree.js
+
+------------------------------------------------------------------------
+D2: Area lights
+
+
+------------------------------------------------------------------------
 
 
 Run

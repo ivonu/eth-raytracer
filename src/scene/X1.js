@@ -1,6 +1,6 @@
 function loadAdditionalStuff() {
 
-    var light2 = new Light (
+    var light2 = new PointLight (
         $V([-10,10,10]),        // position
         new Color(1,1,1),       // color
         0,                      // ambient intensity
