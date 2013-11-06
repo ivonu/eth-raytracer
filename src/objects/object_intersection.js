@@ -3,7 +3,16 @@ var ObjectIntersection = function (_object1, _object2, _material) {
 
     this.object1 = _object1;
     this.object2 = _object2;
+
+    this.bounding = null;
 };
+
+ObjectIntersection.prototype.getBounding = function () {
+    if (this.bounding === null) {
+        this.bounding = Bounding.getBoundingFromObjects([this.object1, this.object2]);
+    }
+    return this.bounding;
+}
 
 ObjectIntersection.prototype.intersects = function (ray) {
 

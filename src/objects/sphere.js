@@ -8,17 +8,22 @@ var Sphere = function (_center, _radius, _material, _texture, _normalmap) {
 
     this.northDirection = $V([0,1,1]).toUnitVector();
     this.meridianDirection = $V([-1,1,-1]).toUnitVector();
+
+    this.bounding = null;
 };
 
 Sphere.prototype.getBounding = function () {
-    return new Bounding(
-        this.center.e(1) + this.radius,
-        this.center.e(1) - this.radius,
-        this.center.e(2) + this.radius,
-        this.center.e(2) - this.radius,
-        this.center.e(3) + this.radius,
-        this.center.e(3) - this.radius
-    );
+    if (this.bounding === null) {
+        this.bounding = new Bounding(
+            this.center.e(1) + this.radius,
+            this.center.e(1) - this.radius,
+            this.center.e(2) + this.radius,
+            this.center.e(2) - this.radius,
+            this.center.e(3) + this.radius,
+            this.center.e(3) - this.radius
+        );
+    }
+    return this.bounding;
 }
 
 Sphere.prototype.getInclination = function (unitVector) {
@@ -49,7 +54,6 @@ Sphere.prototype.calcUV = function (intersectionPoint) {
     var rightDirection = $V([1,0,0]);
     var upDirection = $V([0,1,0]);
     var frontDirection = $V([0,0,1]);
-
 
     var meridianAngle = -Math.acos(this.meridianDirection.dot(frontDirection));
     center_to_point = center_to_point.rotate(meridianAngle, $L($V([0,0,0]), upDirection));

@@ -77,8 +77,8 @@ function generateRay (pixelX, pixelY, x_offset, y_offset, camera, eye) {
     var camPos = null;
 
     if (eye === Ray.Eye.CENTER) camPos = camera.pos;
-    if (eye === Ray.Eye.LEFT) camPos = camera.pos.add($V([-1,0,0])); // TODO: calculate real cam position
-    if (eye === Ray.Eye.RIGHT) camPos = camera.pos.add($V([1,0,0]));
+    if (eye === Ray.Eye.LEFT) camPos = camera.pos.add(camera.rightDirection.multiply(-0.5));
+    if (eye === Ray.Eye.RIGHT) camPos = camera.pos.add(camera.rightDirection.multiply(0.5));
 
     // vector from camera position to point in imagePane
     var direction = p.subtract(camPos);

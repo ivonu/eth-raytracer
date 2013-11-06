@@ -43,3 +43,31 @@ Bounding.prototype.intersects = function (ray) {
     // intersection if t_min < t_max
     return (t_min < t_max);
 }
+
+Bounding.getBoundingFromObjects = function (objects) {
+    var x_min = Infinity;
+    var y_min = Infinity;
+    var z_min = Infinity;
+    var x_max = -Infinity;
+    var y_max = -Infinity;
+    var z_max = -Infinity;
+
+    for (var i = 0; i < objects.length; i++) {
+        var bounding = objects[i].getBounding();
+        if (bounding.x_min < x_min) x_min = bounding.x_min;
+        if (bounding.y_min < y_min) y_min = bounding.y_min;
+        if (bounding.z_min < z_min) z_min = bounding.z_min;
+        if (bounding.x_max > x_max) x_max = bounding.x_max;
+        if (bounding.y_max > y_max) y_max = bounding.y_max;
+        if (bounding.z_max > z_max) z_max = bounding.z_max;
+    }
+
+    return new Bounding (
+        x_max,
+        x_min,
+        y_max,
+        y_min,
+        z_max,
+        z_min
+    );
+}

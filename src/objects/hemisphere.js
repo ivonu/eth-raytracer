@@ -3,6 +3,10 @@ var Hemisphere = function (_sphere, _plane) {
     this.plane = _plane;
 };
 
+Hemisphere.prototype.getBounding = function () {
+    return this.sphere.getBounding();
+}
+
 Hemisphere.prototype.getNormal = function (intersectionPoint) {
     return intersectionPoint.subtract(this.center).toUnitVector();
 }

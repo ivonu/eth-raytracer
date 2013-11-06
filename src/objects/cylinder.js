@@ -9,8 +9,24 @@ var Cylinder = function (_axis_line, _fixed_x, _fixed_y, _fixed_z, _radius_x, _r
     this.radius_y = _radius_y;
     this.radius_z = _radius_z;
 
-    this.material = _material
+    this.material = _material;
+
+    this.bounding = null;
 };
+
+Cylinder.prototype.getBounding = function () {
+    if (this.bounding === null) {
+        this.bounding = new Bounding(
+            Infinity,
+            -Infinity,
+            Infinity,
+            -Infinity,
+            Infinity,
+            -Infinity
+        );
+    }
+    return this.bounding;
+}
 
 Cylinder.prototype.getNormal = function (intersectionPoint) {
 

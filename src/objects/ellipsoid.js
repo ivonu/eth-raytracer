@@ -6,7 +6,22 @@ var Ellipsoid = function (_center, _radius_x, _radius_y, _radius_z, _material) {
     this.radius_z = _radius_z;
 
     this.material = _material
+    this.bounding = null;
 };
+
+Ellipsoid.prototype.getBounding = function () {
+    if (this.bounding === null) {
+        this.bounding = new Bounding(
+            this.center.e(1) + this.radius_x,
+            this.center.e(1) - this.radius_x,
+            this.center.e(2) + this.radius_y,
+            this.center.e(2) - this.radius_y,
+            this.center.e(3) + this.radius_z,
+            this.center.e(3) - this.radius_z
+        );
+    }
+    return this.bounding;
+}
 
 Ellipsoid.prototype.getNormal = function (intersectionPoint) {
 

@@ -1,5 +1,5 @@
 var Octree = function (_bounding, _depth) {
-    this.b = _bounding;
+    this.bounding = _bounding;
     this.data = null;
     this.children = new Array();
     this.depth = _depth;
@@ -15,58 +15,24 @@ Octree.prototype.makeChildren = function () {
             for (var z = 0; z <= 1; z++) {
 
                 var new_b = new Bounding (
-                    this.b.x_max - (1-x)*this.b.x_width/2,
-                    this.b.x_min +     x*this.b.x_width/2,
-                    this.b.y_max - (1-y)*this.b.y_width/2,
-                    this.b.y_min +     y*this.b.y_width/2,
-                    this.b.z_max - (1-z)*this.b.z_width/2,
-                    this.b.z_min +     z*this.b.z_width/2
+                    this.bounding.x_max - (1-x)*this.bounding.x_width/2,
+                    this.bounding.x_min +     x*this.bounding.x_width/2,
+                    this.bounding.y_max - (1-y)*this.bounding.y_width/2,
+                    this.bounding.y_min +     y*this.bounding.y_width/2,
+                    this.bounding.z_max - (1-z)*this.bounding.z_width/2,
+                    this.bounding.z_min +     z*this.bounding.z_width/2
                 )
 
-                this.children.push (new Octree (new_b, this.depth+1));
+                this.children.push (new Octree (new_b, this.depth-1));
             }
         }
-    }
-}
-
-Octree.prototype.loadOctree = function (objects) {
-    // determinate bounding box
-    var x_min = Infinity;
-    var y_min = Infinity;
-    var z_min = Infinity;
-    var x_max = -Infinity;
-    var y_max = -Infinity;
-    var z_max = -Infinity;
-
-    for (var i = 0; i < objects.length; i++) {
-        var bounding = objects[i].getBounding();
-        if (bounding.x_min < x_min) x_min = bounding.x_min;
-        if (bounding.y_min < y_min) y_min = bounding.y_min;
-        if (bounding.z_min < z_min) z_min = bounding.z_min;
-        if (bounding.x_max > x_max) x_max = bounding.x_max;
-        if (bounding.y_max > y_max) y_max = bounding.y_max;
-        if (bounding.z_max > z_max) z_max = bounding.z_max;
-    }
-
-    this.b = new Bounding (
-        x_max,
-        x_min,
-        y_max,
-        y_min,
-        z_max,
-        z_min
-    );
-
-    // insert objects
-    for (var i = 0; i < objects.length; i++) {
-        this.insertObject(objects[i]);
     }
 }
 
 // http://www.brandonpelfrey.com/blog/coding-a-simple-octree/
 Octree.prototype.insertObject = function (object) {
 
-    if (this.depth >= RayConfig.octree_depth) {
+    if (this.depth <= 0) {
         if (this.data === null) {
             this.data = new Array();
         }
@@ -115,7 +81,7 @@ Octree.prototype.insertObject = function (object) {
         var objBounding = object.getBounding();
 
         for (var i = 0; i < this.children.length; i++) {
-            if (this.children[i].b.contains(objBounding)) {
+            if (this.children[i].bounding.contains(objBounding)) {
                 this.children[i].insertObject(object);
             }
         }
@@ -125,7 +91,7 @@ Octree.prototype.insertObject = function (object) {
 
 Octree.prototype.getIntersectionObjects = function (ray) {
     if (this.isLeaf()) {
-        if (this.data !== null && this.depth >= RayConfig.octree_depth) return this.data;
+        if (this.data !== null && this.depth <= 0) return this.data;
         if (this.data !== null) return [this.data];
         return [];
     }
@@ -133,7 +99,7 @@ Octree.prototype.getIntersectionObjects = function (ray) {
     var objects = new Array();
 
     for (var i = 0; i < 8; i++) {
-        if (this.children[i].b.intersects(ray)) {
+        if (this.children[i].bounding.intersects(ray)) {
             objects = objects.concat(this.children[i].getIntersectionObjects(ray));
         }
     }

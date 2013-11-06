@@ -45,7 +45,13 @@ function loadScene() {
         loadA1();
     }
 
-    if (RayConfig.octree) scene.octree.loadOctree (scene.objects);
+    if (RayConfig.octree) {
+        var depth = Math.min (Math.floor (Math.log (scene.objects.length) / Math.log(8)), RayConfig.octree_depth);
+        scene.octree = new Octree(Bounding.getBoundingFromObjects(scene.objects), depth);
+        for (var i = 0; i < scene.objects.length; i++) {
+            scene.octree.insertObject(scene.objects[i]);
+        }
+    }
 
     console.log("scene loaded");
 }

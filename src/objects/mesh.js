@@ -11,10 +11,15 @@ var Mesh = function(_position, _scale) {
     this.scale = _scale;
 
     this.octree = new Octree (null, 0);
+
+    this.bounding = null;
 };
 
 Mesh.prototype.getBounding = function () {
-    return this.octree.b;
+    if (this.bounding === null) {
+        this.bounding = Bounding.getBoundingFromObjects(this.triangles);
+    }
+    return this.bounding;
 }
 
 Mesh.prototype.generateTriangles = function () {
@@ -29,7 +34,13 @@ Mesh.prototype.generateTriangles = function () {
         this.triangles[i] = triangle;
     }
 
-    if (RayConfig.octree) this.octree.loadOctree(this.triangles);
+    if (RayConfig.octree) {
+        var depth = Math.min (Math.ceil (Math.log (this.triangles.length) / Math.log(8)), RayConfig.octree_depth);
+        this.octree = new Octree(this.getBounding(), depth);
+        for (var i = 0; i < this.triangles.length; i++) {
+            this.octree.insertObject(this.triangles[i]);
+        }
+    }
 }
 
 Mesh.prototype.intersects = function (ray) {

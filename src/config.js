@@ -21,7 +21,7 @@ RayConfig = {
     texture: true,
 
     octree: true,
-    octree_depth: 5,
+    octree_depth: Infinity,
 
     intersection_delta: 0.00001
 };

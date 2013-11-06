@@ -2,8 +2,24 @@ var Plane = function (_point, _normal, _material) {
     this.point = _point;
     this.normal = _normal;
 
-    this.material = _material
+    this.material = _material;
+
+    this.bounding = null;
 };
+
+Plane.prototype.getBounding = function () {
+    if (this.bounding === null) {
+        this.bounding = new Bounding(
+            Infinity,
+            -Infinity,
+            Infinity,
+            -Infinity,
+            Infinity,
+            -Infinity
+        );
+    }
+    return this.bounding;
+}
 
 Plane.prototype.getNormal = function (intersectionPoint) {
     return this.normal;

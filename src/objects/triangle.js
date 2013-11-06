@@ -11,45 +11,50 @@ var Triangle = function (_v1, _v2, _v3, _material) {
 
     this.triangleNormal = null;
     this.area = null;
+
+    this.bounding = null;
 };
 
 Triangle.prototype.getBounding = function () {
-    var min_x = Infinity;
-    var min_y = Infinity;
-    var min_z = Infinity;
-    var max_x = -Infinity;
-    var max_y = -Infinity;
-    var max_z = -Infinity;
+    if (this.bounding === null) {
+        var min_x = Infinity;
+        var min_y = Infinity;
+        var min_z = Infinity;
+        var max_x = -Infinity;
+        var max_y = -Infinity;
+        var max_z = -Infinity;
 
-    if (this.v1.e(1) < min_x) min_x = this.v1.e(1);
-    if (this.v2.e(1) < min_x) min_x = this.v2.e(1);
-    if (this.v3.e(1) < min_x) min_x = this.v3.e(1);
-    if (this.v1.e(1) > max_x) max_x = this.v1.e(1);
-    if (this.v2.e(1) > max_x) max_x = this.v2.e(1);
-    if (this.v3.e(1) > max_x) max_x = this.v3.e(1)
+        if (this.v1.e(1) < min_x) min_x = this.v1.e(1);
+        if (this.v2.e(1) < min_x) min_x = this.v2.e(1);
+        if (this.v3.e(1) < min_x) min_x = this.v3.e(1);
+        if (this.v1.e(1) > max_x) max_x = this.v1.e(1);
+        if (this.v2.e(1) > max_x) max_x = this.v2.e(1);
+        if (this.v3.e(1) > max_x) max_x = this.v3.e(1)
 
-    if (this.v1.e(2) < min_y) min_y = this.v1.e(2);
-    if (this.v2.e(2) < min_y) min_y = this.v2.e(2);
-    if (this.v3.e(2) < min_y) min_y = this.v3.e(2);
-    if (this.v1.e(2) > max_y) max_y = this.v1.e(2);
-    if (this.v2.e(2) > max_y) max_y = this.v2.e(2);
-    if (this.v3.e(2) > max_y) max_y = this.v3.e(2);
+        if (this.v1.e(2) < min_y) min_y = this.v1.e(2);
+        if (this.v2.e(2) < min_y) min_y = this.v2.e(2);
+        if (this.v3.e(2) < min_y) min_y = this.v3.e(2);
+        if (this.v1.e(2) > max_y) max_y = this.v1.e(2);
+        if (this.v2.e(2) > max_y) max_y = this.v2.e(2);
+        if (this.v3.e(2) > max_y) max_y = this.v3.e(2);
 
-    if (this.v1.e(3) < min_z) min_z = this.v1.e(3);
-    if (this.v2.e(3) < min_z) min_z = this.v2.e(3);
-    if (this.v3.e(3) < min_z) min_z = this.v3.e(3);
-    if (this.v1.e(3) > max_z) max_z = this.v1.e(3);
-    if (this.v2.e(3) > max_z) max_z = this.v2.e(3);
-    if (this.v3.e(3) > max_z) max_z = this.v3.e(3);
+        if (this.v1.e(3) < min_z) min_z = this.v1.e(3);
+        if (this.v2.e(3) < min_z) min_z = this.v2.e(3);
+        if (this.v3.e(3) < min_z) min_z = this.v3.e(3);
+        if (this.v1.e(3) > max_z) max_z = this.v1.e(3);
+        if (this.v2.e(3) > max_z) max_z = this.v2.e(3);
+        if (this.v3.e(3) > max_z) max_z = this.v3.e(3);
 
-    return new Bounding(
-        max_x,
-        min_x,
-        max_y,
-        min_y,
-        max_z,
-        min_z
-    );
+        this.bounding = new Bounding(
+            max_x,
+            min_x,
+            max_y,
+            min_y,
+            max_z,
+            min_z
+        );
+    }
+    return this.bounding;
 }
 
 Triangle.prototype.getArea = function () {
