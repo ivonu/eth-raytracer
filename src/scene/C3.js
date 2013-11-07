@@ -1,9 +1,9 @@
 function loadC3() {
 
-    //addSphere1();
-    //addSphere2();
+    addSphere1();
+    addSphere2();
     //addPyramid();
-    addRandom();
+    //addRandom();
 }
 
 function addSphere1() {

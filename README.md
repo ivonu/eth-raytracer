@@ -30,7 +30,7 @@ The Scene:
 - scene/scene.js
 - scene/A1.js
 - camera.js
-- light.js
+- point_light.js
 - properties/material.js
 - properties/color.js
 
@@ -87,8 +87,8 @@ D1: Octree (termination criteria: number of levels: log8 #objects)
 - objects/octree.js
 
 ------------------------------------------------------------------------
-D2: Area lights
-
+D2: Area lights with grid / random / jitter
+- area_light.js
 
 ------------------------------------------------------------------------
 

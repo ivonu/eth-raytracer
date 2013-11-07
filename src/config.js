@@ -2,8 +2,6 @@ RayConfig = {
     width: 800,
     height: 600,
 
-    soft_shadow_samples: 50,
-
     shadows: true,
     specular_highlights: true,
     diffuse_illumination: true,
@@ -23,6 +21,11 @@ RayConfig = {
 
     octree: true,
     octree_depth: Infinity,
+
+    soft_shadow_samples: 50,
+    soft_shadow_grid_size: 49,
+    soft_shadow_grid_size_axis: 7,
+    soft_shadow_method: AreaLight.Method.JITTER,
 
     intersection_delta: 0.00001
 };
