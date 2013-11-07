@@ -27,8 +27,7 @@ AreaLight.prototype.getShadowIntensity = function (intersection) {
                 for (var s = -RayConfig.soft_shadow_grid_size_axis/2; s < RayConfig.soft_shadow_grid_size_axis/2; s++) {
                     var x = r * cell_size + cell_size/2;
                     var y = s * cell_size + cell_size/2;
-                    var subPos = this.pos.add (upDirection.multiply(y));
-                        subPos = this.pos.add (rightDirection.multiply(x));
+                    var subPos = this.pos.add (upDirection.multiply(y)).add (rightDirection.multiply(x));
 
                     if (subPos.distanceFrom(this.pos) <= this.radius)
                         subPositions[i++] = subPos;
@@ -42,8 +41,7 @@ AreaLight.prototype.getShadowIntensity = function (intersection) {
             do {
                 var x = Math.random()*2 - 1;
                 var y = Math.random()*2 - 1;
-                subPositions[i] = this.pos.add (upDirection.multiply(y));
-                subPositions[i] = this.pos.add (rightDirection.multiply(x));
+                subPositions[i] = this.pos.add (upDirection.multiply(y)).add (rightDirection.multiply(x));
             } while (subPositions[i].distanceFrom(this.pos) > this.radius);
         }
 
@@ -60,8 +58,7 @@ AreaLight.prototype.getShadowIntensity = function (intersection) {
                     do {
                         var x = r * cell_size + cell_size * Math.random();
                         var y = s * cell_size + cell_size * Math.random();
-                        subPos = this.pos.add (upDirection.multiply(y));
-                        subPos = this.pos.add (rightDirection.multiply(x));
+                        subPos = this.pos.add (upDirection.multiply(y)).add (rightDirection.multiply(x));
                     } while (subPos.distanceFrom(this.pos) > this.radius);
 
                     subPositions[i++] = subPos;
