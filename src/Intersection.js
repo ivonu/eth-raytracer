@@ -30,7 +30,7 @@ var Intersection = function (_ray, _t1, _t2, _normalObject, _object, _material) 
 Intersection.prototype.getAmbient = function () {
     if (RayConfig.texture && this.object.texture) {
         var uv = this.object.calcUV(this.getPoint());
-        return this.object.texture.getPixelColor(uv[0], uv[1]);
+        return this.object.texture.getColor(uv[0], uv[1]);
     }
     return this.object.material.ambient;
 }
@@ -38,7 +38,7 @@ Intersection.prototype.getAmbient = function () {
 Intersection.prototype.getDiffuse = function () {
     if (RayConfig.texture && this.object.texture) {
         var uv = this.object.calcUV(this.getPoint());
-        return this.object.texture.getPixelColor(uv[0], uv[1]);
+        return this.object.texture.getColor(uv[0], uv[1]);
     }
     return this.object.material.diffuse;
 }
@@ -46,7 +46,7 @@ Intersection.prototype.getDiffuse = function () {
 Intersection.prototype.getSpecular = function () {
     if (RayConfig.texture && this.object.texture) {
         var uv = this.object.calcUV(this.getPoint());
-        return this.object.texture.getPixelColor(uv[0], uv[1]);
+        return this.object.texture.getColor(uv[0], uv[1]);
     }
     return this.object.material.specular;
 }
