@@ -25,6 +25,7 @@ NormalMap.prototype.noFilter = function (u,v) {
     return this.getPixelNormal(fu, fv);
 }
 
+// http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_6_Textures_Cameras_and_Speed.shtml
 NormalMap.prototype.bilinearFilter = function (u, v) {
     // exact pixel values
     var u = u * this.tga.header.width;
