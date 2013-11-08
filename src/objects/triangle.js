@@ -62,8 +62,8 @@ Triangle.prototype.getArea = function () {
         var AB = this.v2.subtract(this.v1);
         var AC = this.v3.subtract(this.v1);
         var cr = AB.cross(AC);
-        this.area = cr.distanceFrom($V([0,0,0])) / 2; // same?
-        //this.area = Math.sqrt (cr.e(1)*cr.e(1) + cr.e(2)*cr.e(2) + cr.e(3)*cr.e(3)) / 2;
+        //this.area = cr.distanceFrom($V([0,0,0])) / 2; // same?
+        this.area = Math.sqrt (cr.e(1)*cr.e(1) + cr.e(2)*cr.e(2) + cr.e(3)*cr.e(3)) / 2;
     }
     return this.area;
 }
@@ -81,14 +81,14 @@ Triangle.prototype.getNormal = function (intersectionPoint) {
     if (this.n1 === null && this.n2 === null && this.n3 === null)
         return this.getTriangleNormal();
 
-    var d1 = intersectionPoint.distanceFrom(this.v1);
-    var d2 = intersectionPoint.distanceFrom(this.v2);
-    var d3 = intersectionPoint.distanceFrom(this.v3);
+    var a1 = new Triangle(intersectionPoint, this.v2, this.v3, null).getArea();
+    var a2 = new Triangle(intersectionPoint, this.v1, this.v3, null).getArea();
+    var a3 = new Triangle(intersectionPoint, this.v1, this.v2, null).getArea();
 
     var normal = $V([0,0,0]);
-    normal = normal.add (this.n1.multiply(1/d1));
-    normal = normal.add (this.n2.multiply(1/d2));
-    normal = normal.add (this.n3.multiply(1/d3));
+    normal = normal.add (this.n1.multiply(a1));
+    normal = normal.add (this.n2.multiply(a2));
+    normal = normal.add (this.n3.multiply(a3));
 
     return normal.toUnitVector();
 }

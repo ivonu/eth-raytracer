@@ -13,6 +13,6 @@ function addRandom() {
     if (r === 3) file = './data/teapot.obj';
 
     var object = readOBJ(file, $V([0,0,0]), 0.3);
-    object.material = Material.red();
+    object.material = Material.redC1();
     scene.addObject(object);
 }
