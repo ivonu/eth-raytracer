@@ -55,13 +55,14 @@ AreaLight.prototype.getShadowIntensity = function (intersection) {
                 for (var s = -RayConfig.soft_shadow_grid_size_axis/2; s < RayConfig.soft_shadow_grid_size_axis/2; s++) {
 
                     var subPos = null;
+                    var tries = 20;
                     do {
                         var x = r * cell_size + cell_size * Math.random();
                         var y = s * cell_size + cell_size * Math.random();
                         subPos = this.pos.add (upDirection.multiply(y)).add (rightDirection.multiply(x));
-                    } while (subPos.distanceFrom(this.pos) > this.radius);
+                    } while (subPos.distanceFrom(this.pos) > this.radius && tries-- > 0);
 
-                    subPositions[i++] = subPos;
+                    if (tries > 0) subPositions[i++] = subPos;
                 }
             }
         }

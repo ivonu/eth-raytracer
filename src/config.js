@@ -20,11 +20,10 @@ RayConfig = {
     texture: true,
 
     octree: true,
-    octree_depth: Infinity,
+    octree_max_depth: 100,
 
     soft_shadow_samples: 50,
-    soft_shadow_grid_size: 49,
-    soft_shadow_grid_size_axis: 7,
+    soft_shadow_grid_size_axis: 8,
     soft_shadow_method: AreaLight.Method.JITTER,
 
     intersection_delta: 0.00001

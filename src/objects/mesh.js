@@ -35,7 +35,7 @@ Mesh.prototype.generateTriangles = function () {
     }
 
     if (RayConfig.octree) {
-        var depth = Math.min (Math.ceil (Math.log (this.triangles.length) / Math.log(8)), RayConfig.octree_depth);
+        var depth = Math.min (Math.ceil (Math.log (this.triangles.length) / Math.log(8)), RayConfig.octree_max_depth);
         this.octree = new Octree(this.getBounding(), depth);
         for (var i = 0; i < this.triangles.length; i++) {
             this.octree.insertObject(this.triangles[i]);
