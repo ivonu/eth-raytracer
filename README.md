@@ -66,7 +66,7 @@ C1: Stereoscopic rendering
     - trace()
 
 ------------------------------------------------------------------------
-C2: Texture mapping and bump mapping
+C2: Texture mapping and bump mapping with bilinear filter for anti-aliasing
 - properties/texture.js
 - properties/normalmap.js
 - objects/sphere.js

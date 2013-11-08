@@ -1,4 +1,4 @@
-function loadAdditionalStuff() {
+function loadX1() {
 
     var light2 = new PointLight (
         $V([-10,10,10]),        // position

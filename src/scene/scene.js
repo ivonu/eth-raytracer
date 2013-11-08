@@ -44,7 +44,10 @@ function loadScene() {
         loadD1();
 
     } else if (ModuleId.X1) {
-        loadAdditionalStuff();
+        loadX1();
+
+    } else if (ModuleId.X2) {
+        loadX2();
 
     } else {
         loadA1();
